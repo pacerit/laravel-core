@@ -1,0 +1,27 @@
+{
+    "name": "pacerit/butterfly-core",
+    "description": "Package of core classes that provide standardization in usage of Services, Repositories etc. for Laravel framework.",
+    "type": "library",
+    "keywords": [
+        "pacerit",
+        "butterfly-core",
+        "core",
+        "framework",
+        "laravel"
+    ],
+    "require": {
+        "laravel/framework": "5.7.*",
+        "prettus/l5-repository": "^2.6",
+        "php": "^7.1",
+        "ext-json": "^1.5"
+    },
+    "license": "No license",
+    "authors": [
+        {
+            "name": "PacerIT Development Team",
+            "email": "kontakt@pacerit.pl",
+            "homepage": "https://pacerit.pl"
+        }
+    ],
+    "minimum-stability": "dev"
+}
