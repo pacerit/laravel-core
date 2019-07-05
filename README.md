@@ -6,9 +6,10 @@ Package of core classes that provide standardization in usage of Services, Repos
 
 ### Basic classes
     CoreEntity::class - base class models
-    CoreContoller::class - base class of controller
-    CoreService::class - base class of services
     CoreRepository::class - base class of repositories
+    CoreWebContoller::class - base class of web controller
+    CoreAPIContoller::class - base class of API controller
+    CoreService::class - base class of services
     CoreFormatter::class - base class of formatter
     CoreException::class - base class of exceptions
     CoreJob::class - base class of jobs
