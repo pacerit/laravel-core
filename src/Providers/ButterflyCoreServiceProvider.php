@@ -6,11 +6,15 @@ use Illuminate\Support\ServiceProvider;
 use pacerit\ButterflyCore\Entities\CoreEntity;
 use pacerit\ButterflyCore\Entities\Interfaces\CoreEntityInterface;
 use pacerit\ButterflyCore\Exceptions\CoreException;
+use pacerit\butterflyCore\Formatters\CoreFormatter;
+use pacerit\butterflyCore\Formatters\Interfaces\CoreFormatterInterface;
 use pacerit\ButterflyCore\Interfaces\CoreExceptionInterface;
 use pacerit\butterflyCore\Repositories\CoreRepository;
 use pacerit\butterflyCore\Repositories\Criteria\CoreRepositoryCriteria;
 use pacerit\butterflyCore\Repositories\Criteria\Interfaces\CoreRepositoryCriteriaInterface;
 use pacerit\butterflyCore\Repositories\Interfaces\CoreRepositoryInterface;
+use pacerit\butterflyCore\Services\CoreService;
+use pacerit\butterflyCore\Services\Interfaces\CoreServiceInterface;
 
 /**
  * Class ButterflyCoreServiceProvider
@@ -38,6 +42,12 @@ class ButterflyCoreServiceProvider extends ServiceProvider
         // Repositories.
         $this->app->bind(CoreRepositoryInterface::class, CoreRepository::class);
         $this->app->bind(CoreRepositoryCriteriaInterface::class, CoreRepositoryCriteria::class);
+
+        // Services.
+        $this->app->bind(CoreServiceInterface::class, CoreService::class);
+
+        // Formatters.
+        $this->app->bind(CoreFormatterInterface::class, CoreFormatter::class);
     }
 
 }

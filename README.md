@@ -7,23 +7,20 @@ Package of core classes that provide standardization in usage of Services, Repos
 ### Basic classes
     CoreEntity::class - base class models
     CoreRepository::class - base class of repositories
-    CoreWebContoller::class - base class of web controller
-    CoreAPIContoller::class - base class of API controller
     CoreService::class - base class of services
     CoreFormatter::class - base class of formatter
     CoreException::class - base class of exceptions
+    
+    #### In progress
+    CoreWebContoller::class - base class of web controller
+    CoreAPIContoller::class - base class of API controller
     CoreJob::class - base class of jobs
     CoreCommand::class - base class of commands
-    CoreHelper::class - base class of helpers
     CoreViewComposer::class - base class of view composer
     
-### Services
-    CoreSettingsService::class - Service for storing global setitings values for modules
-    
 ### Traits
+    ScenatioTrait::class
+    
+    #### In progress
     CurrencyTrait::class
     LanguageTrait::class
-    
-### Facades
-    LogFacade::class - extension to default Laravel facede. Add generate of backtract of error based on default 
-    log function. To user it, overwrite Log facede in config/app.php

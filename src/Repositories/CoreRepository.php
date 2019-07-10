@@ -2,6 +2,7 @@
 
 namespace pacerit\butterflyCore\Repositories;
 
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Collection;
 use Illuminate\Container\Container;
 use pacerit\ButterflyCore\Entities\CoreEntity;
@@ -54,6 +55,7 @@ abstract class CoreRepository implements CoreRepositoryInterface
      *
      * @param Container $app
      * @throws RepositoryEntityException
+     * @throws BindingResolutionException
      */
     public function __construct(Container $app)
     {
@@ -67,6 +69,7 @@ abstract class CoreRepository implements CoreRepositoryInterface
      *
      * @return CoreRepositoryInterface
      * @throws RepositoryEntityException
+     * @throws BindingResolutionException
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      * @since 2019-07-05
      */
@@ -225,6 +228,88 @@ abstract class CoreRepository implements CoreRepositoryInterface
         $this->applyCriteria();
 
         return $this->getEntity()->get($columns);
+    }
+
+    /**
+     * Save new entity
+     *
+     * @param array $parameters
+     * @return CoreEntityInterface
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-07-10
+     */
+    public function create(array $parameters = []): CoreEntityInterface
+    {
+        $this->entity()->newInstance($parameters);
+        $this->getEntity()->save();
+
+        return $this->getEntity();
+    }
+
+    /**
+     * Update entity
+     *
+     * @param integer $id
+     * @param array $parameters
+     * @return CoreEntityInterface
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-07-10
+     */
+    public function update(int $id, array $parameters = []): CoreEntityInterface
+    {
+        $this->entity = $this->getEntity()->findOrFail($id);
+        $this->getEntity()->fill($parameters);
+        $this->getEntity()->save();
+
+        return $this->getEntity();
+    }
+
+    /**
+     * Delete entity
+     *
+     * @param integer $id
+     * @return CoreRepositoryInterface
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-07-10
+     */
+    public function delete(int $id): CoreRepositoryInterface
+    {
+        $this->getEntity()->delete();
+
+        return $this;
+    }
+
+    /**
+     * Get first entity record or new entity instance
+     *
+     * @param array $where
+     * @return CoreEntityInterface
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-07-10
+     */
+    public function firstOrNew(array $where): CoreEntityInterface
+    {
+        return $this->getEntity()->firstOrNew($where);
+    }
+
+    /**
+     * Get first entity record or null
+     *
+     * @param array $where
+     * @return CoreEntityInterface|null
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-07-10
+     */
+    public function firstOrNull(array $where): ?CoreEntityInterface
+    {
+        /* @var CoreEntityInterface $entity */
+        $entity = $this->firstOrNew($where);
+
+        if ($entity->getID() === null) {
+            return null;
+        }
+
+        return $entity;
     }
 
 }
