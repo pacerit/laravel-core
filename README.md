@@ -27,11 +27,90 @@ Package of core classes that provide standardization in usage of Services, Repos
     LanguageTrait::class
     
 ## Implementation
+
+### Entities implementation
+In order to use Service, Repositories or Formatter classes, first you must prepare your entities. Every entity
+in you application must:
+- Extend CoreEntity class
+- Implements interface that extend CoreEntityInterface
+
+For example, this is implementation of Example entity:
+
+Example class:
+```
+class Example extends CoreEntity implements ExampleInterface
+{}
+```
+
+ExampleInterface:
+```
+interface ExampleInterface extends CoreEntityInterface
+{}
+```
+Interface and entity class must be bind in you app ServiceProvider:
+```
+/**
+ * Register any application services.
+ *
+ * @return void
+ */
+public function register()
+{
+    $this->app->bind(ExampleInterface::class, Example::class);
+}
+```
+
+### Repositories implementation
+To use Repositories, create repository class that:
+- Extend CoreRepository class
+- Implements interface that extend CoreRepositoryInterface
+
+For example, this is implementation of repository for Example entity:
+
+ExampleRepositoryInterface:
+```
+interface ExampleRepositoryInterface extends CoreRepositoryInterface
+{}
+```
+
+ExampleRepository class. This class has to implement entity() method, that return namespace of entity
+that will be used by repository.
+```
+class ExampleRepository extends CoreRepository implements ExampleRepositoryInterface
+{
+    /**
+     * Model entity class that will be use in repository
+     *
+     * @return CoreRepositoryInterface
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-07-05
+     */
+    public function entity(): string
+    {
+        return ExampleInterface::class;
+    }
+
+}
+```
+
+Interface and repository class must be bind in you app ServiceProvider:
+```
+/**
+ * Register any application services.
+ *
+ * @return void
+ */
+public function register()
+{
+    $this->app->bind(EExampleRepositoryInterfaceclass, ExampleRepository::class);
+}
+```
+
 ### Using UUID's in Entity
 This package provides possibility to use UUID's in Entities as secondary key, for external use (i.e. in routes). 
 It still requires to use integer type ID's as Primary keys in your database.
 
-To use UUDD's in your Entity, it must:
+To use UUID's in your Entity, it must:
 - Implements UUIDInterface
 - Use UsesUUID trait
 
