@@ -274,6 +274,7 @@ abstract class CoreRepository implements CoreRepositoryInterface
      */
     public function delete(int $id): CoreRepositoryInterface
     {
+        $this->entity = $this->getEntity()->findOrFail($id);
         $this->getEntity()->delete();
 
         return $this;
