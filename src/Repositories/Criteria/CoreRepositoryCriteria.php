@@ -11,9 +11,7 @@ use pacerit\butterflyCore\Repositories\Criteria\Interfaces\CoreRepositoryCriteri
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  * @since 2019-07-05
  */
-class CoreRepositoryCriteria implements CoreRepositoryCriteriaInterface
+abstract class CoreRepositoryCriteria implements CoreRepositoryCriteriaInterface
 {
-
-    // TODO: Implement!
 
 }

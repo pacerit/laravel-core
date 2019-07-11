@@ -240,7 +240,7 @@ abstract class CoreRepository implements CoreRepositoryInterface
      */
     public function create(array $parameters = []): CoreEntityInterface
     {
-        $this->entity()->newInstance($parameters);
+        $this->getEntity()->newInstance($parameters);
         $this->getEntity()->save();
 
         return $this->getEntity();
