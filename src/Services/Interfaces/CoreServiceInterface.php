@@ -3,10 +3,10 @@
 namespace pacerit\butterflyCore\Services\Interfaces;
 
 use Illuminate\Contracts\Container\BindingResolutionException;
-use pacerit\ButterflyCore\Entities\Interfaces\CoreEntityInterface;
+use pacerit\butterflyCore\Entities\Interfaces\CoreEntityInterface;
 use pacerit\butterflyCore\Formatters\Interfaces\CoreFormatterInterface;
 use pacerit\butterflyCore\Repositories\Exceptions\RepositoryEntityException;
-use pacerit\ButterflyCore\Repositories\Interfaces\CoreRepositoryInterface;
+use pacerit\butterflyCore\Repositories\Interfaces\CoreRepositoryInterface;
 use pacerit\butterflyCore\Services\Exceptions\EntityNotFoundByID;
 
 /**

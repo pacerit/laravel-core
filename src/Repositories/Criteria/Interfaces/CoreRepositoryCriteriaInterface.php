@@ -2,7 +2,7 @@
 
 namespace pacerit\butterflyCore\Repositories\Criteria\Interfaces;
 
-use pacerit\ButterflyCore\Entities\Interfaces\CoreEntityInterface;
+use pacerit\butterflyCore\Entities\Interfaces\CoreEntityInterface;
 
 /**
  * Interface CoreRepositoryCriteriaInterface

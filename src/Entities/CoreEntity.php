@@ -1,16 +1,16 @@
 <?php
 
-namespace pacerit\ButterflyCore\Entities;
+namespace pacerit\butterflyCore\Entities;
 
 use Illuminate\Database\Eloquent\Model;
-use pacerit\ButterflyCore\Entities\Interfaces\CoreEntityInterface;
+use pacerit\butterflyCore\Entities\Interfaces\CoreEntityInterface;
 
 /**
  * Class CoreEntity
  * Base class of the all models in application/modules. New models
  * must extend this class.
  *
- * @package pacerit\ButterflyCore\Entities
+ * @package pacerit\butterflyCore\Entities
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  * @since 2019-07-05
  */

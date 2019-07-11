@@ -2,7 +2,7 @@
 
 namespace pacerit\butterflyCore\Traits\Exceptions;
 
-use pacerit\ButterflyCore\Exceptions\CoreException;
+use pacerit\butterflyCore\Exceptions\CoreException;
 use Throwable;
 
 /**

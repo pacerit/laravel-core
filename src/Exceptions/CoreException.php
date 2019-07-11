@@ -1,9 +1,9 @@
 <?php
 
-namespace pacerit\ButterflyCore\Exceptions;
+namespace pacerit\butterflyCore\Exceptions;
 
 use Exception;
-use pacerit\ButterflyCore\Interfaces\CoreExceptionInterface;
+use pacerit\butterflyCore\Interfaces\CoreExceptionInterface;
 use Throwable;
 
 /**

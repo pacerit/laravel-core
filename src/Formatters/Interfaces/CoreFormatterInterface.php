@@ -3,7 +3,7 @@
 namespace pacerit\butterflyCore\Formatters\Interfaces;
 
 use Illuminate\Support\Collection;
-use pacerit\ButterflyCore\Entities\Interfaces\CoreEntityInterface;
+use pacerit\butterflyCore\Entities\Interfaces\CoreEntityInterface;
 
 /**
  * Interface CoreFormatterInterface

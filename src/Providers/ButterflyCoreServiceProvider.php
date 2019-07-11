@@ -1,14 +1,14 @@
 <?php
 
-namespace pacerit\ButterflyCore\Providers;
+namespace pacerit\butterflyCore\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use pacerit\ButterflyCore\Entities\CoreEntity;
-use pacerit\ButterflyCore\Entities\Interfaces\CoreEntityInterface;
-use pacerit\ButterflyCore\Exceptions\CoreException;
+use pacerit\butterflyCore\Entities\CoreEntity;
+use pacerit\butterflyCore\Entities\Interfaces\CoreEntityInterface;
+use pacerit\butterflyCore\Exceptions\CoreException;
 use pacerit\butterflyCore\Formatters\CoreFormatter;
 use pacerit\butterflyCore\Formatters\Interfaces\CoreFormatterInterface;
-use pacerit\ButterflyCore\Interfaces\CoreExceptionInterface;
+use pacerit\butterflyCore\Interfaces\CoreExceptionInterface;
 use pacerit\butterflyCore\Repositories\CoreRepository;
 use pacerit\butterflyCore\Repositories\Criteria\CoreRepositoryCriteria;
 use pacerit\butterflyCore\Repositories\Criteria\Interfaces\CoreRepositoryCriteriaInterface;
@@ -17,13 +17,13 @@ use pacerit\butterflyCore\Services\CoreService;
 use pacerit\butterflyCore\Services\Interfaces\CoreServiceInterface;
 
 /**
- * Class ButterflyCoreServiceProvider
+ * Class butterflyCoreServiceProvider
  *
- * @package pacerit\ButterflyCore
+ * @package pacerit\butterflyCore
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  * @since 2019-07-05
  */
-class ButterflyCoreServiceProvider extends ServiceProvider
+class butterflyCoreServiceProvider extends ServiceProvider
 {
 
     /**

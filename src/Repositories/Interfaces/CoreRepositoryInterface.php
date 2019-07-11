@@ -1,10 +1,10 @@
 <?php
 
-namespace pacerit\ButterflyCore\Repositories\Interfaces;
+namespace pacerit\butterflyCore\Repositories\Interfaces;
 
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Collection;
-use pacerit\ButterflyCore\Entities\Interfaces\CoreEntityInterface;
+use pacerit\butterflyCore\Entities\Interfaces\CoreEntityInterface;
 use pacerit\butterflyCore\Repositories\Criteria\Interfaces\CoreRepositoryCriteriaInterface;
 use pacerit\butterflyCore\Repositories\Exceptions\RepositoryEntityException;
 

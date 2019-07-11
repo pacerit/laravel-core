@@ -3,7 +3,7 @@
 namespace pacerit\butterflyCore\Entities\Traits;
 
 use Illuminate\Support\Str;
-use pacerit\ButterflyCore\Entities\Interfaces\CoreEntityInterface;
+use pacerit\butterflyCore\Entities\Interfaces\CoreEntityInterface;
 use pacerit\butterflyCore\Entities\Interfaces\UUIDInterface;
 
 /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace pacerit\ButterflyCore\Entities\Interfaces;
+namespace pacerit\butterflyCore\Entities\Interfaces;
 
 use ArrayAccess;
 use JsonSerializable;
@@ -12,7 +12,7 @@ use Illuminate\Contracts\Support\Jsonable;
 /**
  * Interface CoreEntityInterface
  *
- * @package pacerit\ButterflyCore\Entities\Interfaces
+ * @package pacerit\butterflyCore\Entities\Interfaces
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  * @since 2019-07-05
  */
