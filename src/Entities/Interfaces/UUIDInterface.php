@@ -17,11 +17,11 @@ interface UUIDInterface
     /**
      * GetUUID
      *
-     * @return string
+     * @return string|null
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      * @since 2019-07-11
      */
-    public function getUUID(): string;
+    public function getUUID(): ?string;
 
     /**
      * Set UUID
