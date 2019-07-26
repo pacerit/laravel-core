@@ -24,6 +24,8 @@ Package of core classes that provide standardization in usage of Services, Repos
 ### Traits
     ScenatioTrait::class
     StringTrait::class
+    NumberTrait::class
+    XMLTrait::class
     
     #### In progress
     CurrencyTrait::class
