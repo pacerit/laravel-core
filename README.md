@@ -2,6 +2,9 @@
 
 Package of core classes that provide standardization in usage of Services, Repositories etc. for Laravel framework.
 
+## Installation
+    composer require pacerit/laravel-core
+
 ## Classes included
 
 ### Basic classes
