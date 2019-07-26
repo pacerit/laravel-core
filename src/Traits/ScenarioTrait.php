@@ -98,7 +98,7 @@ trait ScenarioTrait
 
         if (is_string($scenarioInstance)) {
             $container = Container::getInstance();
-            return $container->make($scenario);
+            return $container->make($scenarioInstance);
         }
 
         return $scenarioInstance;
