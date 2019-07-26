@@ -2,6 +2,8 @@
 
 namespace pacerit\butterflyCore\Traits;
 
+use Illuminate\Container\Container;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use pacerit\butterflyCore\Helpers\ArrayHelper;
 use pacerit\butterflyCore\Traits\Exceptions\ScenarioNotRegistered;
 use pacerit\butterflyCore\Traits\Exceptions\ScenarioRegistered;
@@ -78,6 +80,7 @@ trait ScenarioTrait
      * @param string|null $group
      * @return mixed
      * @throws ScenarioNotRegistered
+     * @throws BindingResolutionException
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      * @since 2019-07-10
      */
@@ -94,7 +97,8 @@ trait ScenarioTrait
         $scenarioInstance = ArrayHelper::get($this->scenarios, $scenario);
 
         if (is_string($scenarioInstance)) {
-            return new $scenarioInstance;
+            $container = Container::getInstance();
+            return $container->make($scenario);
         }
 
         return $scenarioInstance;
