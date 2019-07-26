@@ -102,7 +102,43 @@ Interface and repository class must be bind in you app ServiceProvider:
  */
 public function register()
 {
-    $this->app->bind(EExampleRepositoryInterfaceclass, ExampleRepository::class);
+    $this->app->bind(ExampleRepositoryInterfaceclass, ExampleRepository::class);
+}
+```
+
+### Services implementation
+To use Service, create service class that:
+- Extend CoreService class
+- Implements interface that extend CoreServiceInterface
+
+For example, this is implementation of service for Example entity:
+
+ExampleServiceInterface:
+```
+interface ExampleServiceInterface extends CoreRepositoryInterface
+{}
+```
+ExampleService class. In __construct() function of class, provide class of repository for entity, and set it by
+setRepository() function. Optionally you can pass formatter for entity and set if by setFormattter() function
+to provide formatting functionality.
+Provided classes must be implementation of CoreRepository/CoreFormatter.
+```
+class ExampleService extends CoreService implements ExampleServiceInterface
+{
+    /**
+     * ExampleService constructor.
+     *
+     * @param ExampleRepositoryInterface $exampleRepository
+     * @param ExampleFormatterInterface $exampleFormatter
+     */
+    public function __construct(
+        ExampleRepositoryInterface $exampleRepository,
+        ExampleFormatterInterface $exampleFormatter
+    ) {
+        $this->setRepository($exampleRepository)
+            ->setFormatter($exampleFormatter);
+    }
+
 }
 ```
 
