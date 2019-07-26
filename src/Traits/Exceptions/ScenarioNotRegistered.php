@@ -1,14 +1,14 @@
 <?php
 
-namespace pacerit\butterflyCore\Traits\Exceptions;
+namespace PacerIT\LaravelCore\Traits\Exceptions;
 
-use pacerit\butterflyCore\Exceptions\CoreException;
+use PacerIT\LaravelCore\Exceptions\CoreException;
 use Throwable;
 
 /**
  * Class ScenarioNotRegistered
  *
- * @package pacerit\butterflyCore\Traits\Exceptions
+ * @package PacerIT\LaravelCore\Traits\Exceptions
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  * @since 2019-07-10
  */

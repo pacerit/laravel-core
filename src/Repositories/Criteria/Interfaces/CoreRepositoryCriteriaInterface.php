@@ -1,13 +1,13 @@
 <?php
 
-namespace pacerit\butterflyCore\Repositories\Criteria\Interfaces;
+namespace PacerIT\LaravelCore\Repositories\Criteria\Interfaces;
 
-use pacerit\butterflyCore\Entities\Interfaces\CoreEntityInterface;
+use PacerIT\LaravelCore\Entities\Interfaces\CoreEntityInterface;
 
 /**
  * Interface CoreRepositoryCriteriaInterface
  *
- * @package pacerit\butterflyCore\Repositories\Criteria\Interfaces
+ * @package PacerIT\LaravelCore\Repositories\Criteria\Interfaces
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  * @since 2019-07-05
  */

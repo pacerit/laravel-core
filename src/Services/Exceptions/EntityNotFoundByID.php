@@ -1,14 +1,14 @@
 <?php
 
-namespace pacerit\butterflyCore\Services\Exceptions;
+namespace PacerIT\LaravelCore\Services\Exceptions;
 
-use pacerit\butterflyCore\Exceptions\CoreException;
+use PacerIT\LaravelCore\Exceptions\CoreException;
 use Throwable;
 
 /**
  * Class EntityNotFoundByID
  *
- * @package pacerit\butterflyCore\Services\Exceptions
+ * @package PacerIT\LaravelCore\Services\Exceptions
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  * @since 2019-07-10
  */

@@ -1,13 +1,13 @@
 <?php
 
-namespace pacerit\butterflyCore\Helpers;
+namespace PacerIT\LaravelCore\Helpers;
 
 use Illuminate\Support\Arr;
 
 /**
  * Class ArrayHelper
  *
- * @package pacerit\butterflyCore\Helpers
+ * @package PacerIT\LaravelCore\Helpers
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  * @since 2019-07-10
  */

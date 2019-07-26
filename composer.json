@@ -1,10 +1,10 @@
 {
-    "name": "pacerit/butterflyCore",
+    "name": "pacerit/laravel-core",
     "description": "Package of core classes that provide standardization in usage of Services, Repositories etc. for Laravel framework.",
     "type": "library",
     "keywords": [
         "pacerit",
-        "butterfly-core",
+        "laravel-core",
         "core",
         "framework",
         "laravel"
@@ -25,13 +25,13 @@
     ],
     "autoload": {
         "psr-4": {
-            "pacerit\\butterflyCore\\": "src/"
+            "PacerIT\\LaravelCore\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "pacerit\\butterflyCore\\Providers\\ButterflyCoreServiceProvider"
+                "PacerIT\\LaravelCore\\Providers\\LaravelCoreServiceProvider"
             ]
         }
     },

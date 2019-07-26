@@ -1,17 +1,17 @@
 <?php
 
-namespace pacerit\butterflyCore\Repositories\Interfaces;
+namespace PacerIT\LaravelCore\Repositories\Interfaces;
 
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Collection;
-use pacerit\butterflyCore\Entities\Interfaces\CoreEntityInterface;
-use pacerit\butterflyCore\Repositories\Criteria\Interfaces\CoreRepositoryCriteriaInterface;
-use pacerit\butterflyCore\Repositories\Exceptions\RepositoryEntityException;
+use PacerIT\LaravelCore\Entities\Interfaces\CoreEntityInterface;
+use PacerIT\LaravelCore\Repositories\Criteria\Interfaces\CoreRepositoryCriteriaInterface;
+use PacerIT\LaravelCore\Repositories\Exceptions\RepositoryEntityException;
 
 /**
  * Interface CoreRepositoryInterface
  *
- * @package pacerit\butterflyCore\Repositories\Interfaces
+ * @package PacerIT\LaravelCore\Repositories\Interfaces
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  * @since 2019-07-05
  */

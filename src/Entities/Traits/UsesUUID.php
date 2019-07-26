@@ -1,16 +1,16 @@
 <?php
 
-namespace pacerit\butterflyCore\Entities\Traits;
+namespace PacerIT\LaravelCore\Entities\Traits;
 
 use Illuminate\Support\Str;
-use pacerit\butterflyCore\Entities\Interfaces\CoreEntityInterface;
-use pacerit\butterflyCore\Entities\Interfaces\UUIDInterface;
+use PacerIT\LaravelCore\Entities\Interfaces\CoreEntityInterface;
+use PacerIT\LaravelCore\Entities\Interfaces\UUIDInterface;
 
 /**
  * Trait UsesUUD
  * This trait can be only used in classes that extend CoreEntity class
  *
- * @package pacerit\butterflyCore\Traits
+ * @package PacerIT\LaravelCore\Traits
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  * @since 2019-07-11
  */

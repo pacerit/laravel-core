@@ -1,19 +1,19 @@
 <?php
 
-namespace pacerit\butterflyCore\Services;
+namespace PacerIT\LaravelCore\Services;
 
 use Illuminate\Contracts\Container\BindingResolutionException;
-use pacerit\butterflyCore\Entities\Interfaces\CoreEntityInterface;
-use pacerit\butterflyCore\Formatters\Interfaces\CoreFormatterInterface;
-use pacerit\butterflyCore\Repositories\Exceptions\RepositoryEntityException;
-use pacerit\butterflyCore\Repositories\Interfaces\CoreRepositoryInterface;
-use pacerit\butterflyCore\Services\Exceptions\EntityNotFoundByID;
-use pacerit\butterflyCore\Services\Interfaces\CoreServiceInterface;
+use PacerIT\LaravelCore\Entities\Interfaces\CoreEntityInterface;
+use PacerIT\LaravelCore\Formatters\Interfaces\CoreFormatterInterface;
+use PacerIT\LaravelCore\Repositories\Exceptions\RepositoryEntityException;
+use PacerIT\LaravelCore\Repositories\Interfaces\CoreRepositoryInterface;
+use PacerIT\LaravelCore\Services\Exceptions\EntityNotFoundByID;
+use PacerIT\LaravelCore\Services\Interfaces\CoreServiceInterface;
 
 /**
  * Class CoreService
  *
- * @package pacerit\butterflyCore\Services
+ * @package PacerIT\LaravelCore\Services
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  * @since 2019-07-10
  */

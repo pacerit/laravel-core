@@ -1,14 +1,14 @@
 <?php
 
-namespace pacerit\butterflyCore\Repositories\Exceptions;
+namespace PacerIT\LaravelCore\Repositories\Exceptions;
 
-use pacerit\butterflyCore\Exceptions\CoreException;
+use PacerIT\LaravelCore\Exceptions\CoreException;
 use Throwable;
 
 /**
  * Class RepositoryEntityException
  *
- * @package pacerit\butterflyCore\Repositories\Exceptions
+ * @package PacerIT\LaravelCore\Repositories\Exceptions
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  * @since 2019-07-05
  */

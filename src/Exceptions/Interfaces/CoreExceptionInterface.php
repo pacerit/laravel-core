@@ -1,11 +1,11 @@
 <?php
 
-namespace pacerit\butterflyCore\Interfaces;
+namespace PacerIT\LaravelCore\Interfaces;
 
 /**
  * Interface CoreExceptionInterface
  *
- * @package pacerit\butterflyCore\Interfaces
+ * @package PacerIT\LaravelCore\Interfaces
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  * @since 2019-07-05
  */

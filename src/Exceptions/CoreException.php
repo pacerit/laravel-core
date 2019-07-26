@@ -1,9 +1,9 @@
 <?php
 
-namespace pacerit\butterflyCore\Exceptions;
+namespace PacerIT\LaravelCore\Exceptions;
 
 use Exception;
-use pacerit\butterflyCore\Interfaces\CoreExceptionInterface;
+use PacerIT\LaravelCore\Interfaces\CoreExceptionInterface;
 use Throwable;
 
 /**

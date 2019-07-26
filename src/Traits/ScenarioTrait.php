@@ -1,17 +1,17 @@
 <?php
 
-namespace pacerit\butterflyCore\Traits;
+namespace PacerIT\LaravelCore\Traits;
 
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Container\BindingResolutionException;
-use pacerit\butterflyCore\Helpers\ArrayHelper;
-use pacerit\butterflyCore\Traits\Exceptions\ScenarioNotRegistered;
-use pacerit\butterflyCore\Traits\Exceptions\ScenarioRegistered;
+use PacerIT\LaravelCore\Helpers\ArrayHelper;
+use PacerIT\LaravelCore\Traits\Exceptions\ScenarioNotRegistered;
+use PacerIT\LaravelCore\Traits\Exceptions\ScenarioRegistered;
 
 /**
  * Trait ScenarioTrait
  *
- * @package pacerit\butterflyCore\Traits
+ * @package PacerIT\LaravelCore\Traits
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  * @since 2019-07-10
  */

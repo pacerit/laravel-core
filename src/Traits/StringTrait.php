@@ -1,11 +1,11 @@
 <?php
 
-namespace pacerit\butterflyCore\Traits;
+namespace PacerIT\LaravelCore\Traits;
 
 /**
  * Trait StringTrait
  *
- * @package pacerit\butterflyCore\Traits
+ * @package PacerIT\LaravelCore\Traits
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  * @since 2019-07-11
  */

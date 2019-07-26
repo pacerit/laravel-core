@@ -1,15 +1,15 @@
 <?php
 
-namespace pacerit\butterflyCore\Formatters;
+namespace PacerIT\LaravelCore\Formatters;
 
 use Illuminate\Support\Collection;
-use pacerit\butterflyCore\Entities\Interfaces\CoreEntityInterface;
-use pacerit\butterflyCore\Formatters\Interfaces\CoreFormatterInterface;
+use PacerIT\LaravelCore\Entities\Interfaces\CoreEntityInterface;
+use PacerIT\LaravelCore\Formatters\Interfaces\CoreFormatterInterface;
 
 /**
  * Class CoreFormatter
  *
- * @package pacerit\butterflyCore\Formatters
+ * @package PacerIT\LaravelCore\Formatters
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  * @since 2019-07-10
  */
