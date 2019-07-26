@@ -1,0 +1,39 @@
+{
+    "name": "pacerit/laravel-core",
+    "description": "Package of core classes that provide standardization in usage of Services, Repositories etc. for Laravel framework.",
+    "type": "library",
+    "keywords": [
+        "pacerit",
+        "laravel-core",
+        "core",
+        "framework",
+        "laravel"
+    ],
+    "require": {
+        "laravel/framework": "5.8.*",
+        "php": "^7.1",
+        "ext-json": "^1.5"
+    },
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Wiktor Pacer",
+            "email": "kontakt@pacerit.pl",
+            "role": "Developer",
+            "homepage": "https://pacerit.pl"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "PacerIT\\LaravelCore\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "PacerIT\\LaravelCore\\Providers\\LaravelCoreServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable"
+}
