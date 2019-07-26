@@ -14,12 +14,12 @@
         "php": "^7.1",
         "ext-json": "^1.5"
     },
-    "license": "No license",
+    "license": "GPL-3.0-or-later",
     "authors": [
         {
-            "name": "PacerIT Development Team",
+            "name": "Wiktor Pacer",
             "email": "kontakt@pacerit.pl",
-            "role": "developer",
+            "role": "Developer",
             "homepage": "https://pacerit.pl"
         }
     ],
