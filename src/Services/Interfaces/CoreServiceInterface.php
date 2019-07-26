@@ -8,6 +8,7 @@ use PacerIT\LaravelCore\Formatters\Interfaces\CoreFormatterInterface;
 use PacerIT\LaravelCore\Repositories\Exceptions\RepositoryEntityException;
 use PacerIT\LaravelCore\Repositories\Interfaces\CoreRepositoryInterface;
 use PacerIT\LaravelCore\Services\Exceptions\EntityNotFoundByID;
+use PacerIT\LaravelCore\Services\Exceptions\EntityNotFoundByKey;
 
 /**
  * Interface CoreServiceInterface
@@ -77,6 +78,18 @@ interface CoreServiceInterface
      * @since 2019-07-10
      */
     public function setModelByID(?int $id): CoreServiceInterface;
+
+    /**
+     * Set entity by key
+     *
+     * @param string $key
+     * @param $value
+     * @return CoreServiceInterface
+     * @throws EntityNotFoundByKey
+     * @since 2019-07-26
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     */
+    public function setModelByKey(string $key, $value): CoreServiceInterface;
 
     /**
      * Create and set new entity class

@@ -8,6 +8,7 @@ use PacerIT\LaravelCore\Formatters\Interfaces\CoreFormatterInterface;
 use PacerIT\LaravelCore\Repositories\Exceptions\RepositoryEntityException;
 use PacerIT\LaravelCore\Repositories\Interfaces\CoreRepositoryInterface;
 use PacerIT\LaravelCore\Services\Exceptions\EntityNotFoundByID;
+use PacerIT\LaravelCore\Services\Exceptions\EntityNotFoundByKey;
 use PacerIT\LaravelCore\Services\Interfaces\CoreServiceInterface;
 
 /**
@@ -120,6 +121,30 @@ abstract class CoreService implements CoreServiceInterface
 
         if ($entity->getID() === null) {
             throw new EntityNotFoundByID($id, class_basename($entity));
+        }
+
+        $this->entity = $entity;
+
+        return $this;
+    }
+
+    /**
+     * Set entity by key
+     *
+     * @param string $key
+     * @param $value
+     * @return CoreServiceInterface
+     * @throws EntityNotFoundByKey
+     * @since 2019-07-26
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     */
+    public function setModelByKey(string $key, $value): CoreServiceInterface
+    {
+        /* @var CoreEntityInterface $entity **/
+        $entity = $this->getRepository()->firstOrNew([$key => $value]);
+
+        if ($entity->getID() === null) {
+            throw new EntityNotFoundByKey($key, $value, class_basename($entity));
         }
 
         $this->entity = $entity;
