@@ -63,6 +63,27 @@ public function register()
 }
 ```
 
+#### Using UUID's in Entity
+This package provides possibility to use UUID's in Entities as secondary key, for external use (i.e. in routes). 
+It still requires to use integer type ID's as Primary keys in your database.
+
+To use UUID's in your Entity, it must:
+- Implements UUIDInterface
+- Use UsesUUID trait
+
+In your migration create field with "uuid" key using uuid() method.
+```
+$table->uuid(UsesUUID::UUID);
+```
+UUID's will bu automatically generated when new entity is created.
+If you use Services, you can add WithUUID trait to your implementation of CoreService class to add methods that 
+are helpful when using UUID's.
+```
+class MyEntityService extends CoreService implements MyEntityServiceInterface
+    use WithUUID;
+    (...)
+```
+
 ### Repositories implementation
 To use Repositories, create repository class that:
 - Extend CoreRepository class
@@ -144,25 +165,86 @@ class ExampleService extends CoreService implements ExampleServiceInterface
 
 }
 ```
-
-### Using UUID's in Entity
-This package provides possibility to use UUID's in Entities as secondary key, for external use (i.e. in routes). 
-It still requires to use integer type ID's as Primary keys in your database.
-
-To use UUID's in your Entity, it must:
-- Implements UUIDInterface
-- Use UsesUUID trait
-
-In your migration create field with "uuid" key using uuid() method.
+#### Using services
+To use Service in controller or other class you can use dependency injection or Container. Below is sample code of
+using service in controller.
 ```
-$table->uuid(UsesUUID::UUID);
+class ExampleController extends Controller {
+
+    /**
+     * @var ExampleServiceInterface $exampleService
+     */
+    protected $exampleService;
+
+    public function __construct(ExampleServiceInterface $exampleService){
+        $this->exampleService = $exampleService;
+    }
+
+    ....
+}
 ```
-UUID's will bu automatically generated when new entity is created.
-If you use Services, you can add WithUUID trait to your implementation of CoreService class to add methods that 
-are helpful when using UUID's.
+#### Available methods
+* setRepository() - set repository to use in service. Passing object must be implementation of CoreRepositoryInterface
+* getRepository() - return previously set repository class instance
+* setFormatter() - set formatter class to use in service. Passing object must be implementation of 
+CoreFormatterInterface
+* getFormatter() - return previously set formatter class instance
+* setModel() - set model you want to work on i.e. if you already have instance
+* setModelByID() - set model by given id (integer). If model with given ID exist, it will be set, otherwise exception
+will by thrown
+* setModelByKey() - set model by given key (column in table) and given value. Helpful when looking for record by column
+other than ID (i.e foreign key)
+* setNewMode() - set new model class instance
+* getModel() - get previously set model class instance
+* format() - get previously set model class instance and pass it to formatter class. CoreFormatterInterface instance
+will be return. Example of use.
 ```
-class MyEntityService extends CoreService implements MyEntityServiceInterface
-    use WithUUID;
-    (...)
+// Return Example entity record with ID 1 as an array.
+return $this->exampleService->setModelByID(1)->format()->toArray();
+```
+* create() - create new entity record based on actually set model, of given parameters. Example:
+```
+For this example, we we assume that Example entity class have setFirstValue() and setSecondValue() functions(setters)
+and const. Both of this example, create the same records in database.
+
+// Create based on previously set entity.
+$this->exampleService
+    ->setNewModel()
+    ->getModel()
+    ->setFirstValue(1)
+    ->setSecondValue(2);
+
+$this->exampleService->create();
+
+// Create model based on parameters.
+$this-exampleService->create(
+    [
+        ExampleInterface::FIRST_VALUE => 1,
+        ExampleInterface::SECOND_VALUE => 2,
+    ]
+);
+
+```
+* update() - update model. Like in create method it base on previously set model or parameters, but we must set existing
+model record before. Otherwise exception will be thrown. Example:
+```
+// Update based on previously set entity.
+$this->exampleService
+    ->setModelByID(1)
+    ->getModel()
+    ->setFirstValue(2);
+
+$this->exampleService->update();
+
+// Update model based on parameters.
+$this-exampleService->update(
+    [
+        ExampleInterface::FIRST_VALUE => 2,
+    ]
+);
+```
+* delete() - delete model. Like in update() method, this also required to set existing model before.
+```
+$this->exampleService->setModelByID(1)->delete();
 ```
     
