@@ -27,4 +27,21 @@ trait StringTrait
         return (json_last_error() == JSON_ERROR_NONE);
     }
 
+    /**
+     * Remove spaces from given string
+     *
+     * @param string|null $string
+     * @return string
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-07-26
+     */
+    public function removeSpaces(?string $string): string
+    {
+        if ($string == null) {
+            return '';
+        }
+
+        return str_replace(' ', '', $string);
+    }
+
 }
