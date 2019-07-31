@@ -3,6 +3,7 @@
 namespace PacerIT\LaravelCore\Repositories;
 
 use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Container\Container;
 use PacerIT\LaravelCore\Entities\CoreEntity;
@@ -93,11 +94,11 @@ abstract class CoreRepository implements CoreRepositoryInterface
     /**
      * Get entity instance
      *
-     * @return CoreEntityInterface
+     * @return CoreEntityInterface|Builder
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      * @since 2019-07-05
      */
-    public function getEntity(): CoreEntityInterface
+    public function getEntity()
     {
         return $this->entity;
     }

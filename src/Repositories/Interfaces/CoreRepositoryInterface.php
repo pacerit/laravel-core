@@ -3,6 +3,7 @@
 namespace PacerIT\LaravelCore\Repositories\Interfaces;
 
 use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use PacerIT\LaravelCore\Entities\Interfaces\CoreEntityInterface;
 use PacerIT\LaravelCore\Repositories\Criteria\Interfaces\CoreRepositoryCriteriaInterface;
@@ -42,11 +43,11 @@ interface CoreRepositoryInterface
     /**
      * Get entity instance
      *
-     * @return CoreEntityInterface
+     * @return CoreEntityInterface|Builder
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      * @since 2019-07-05
      */
-    public function getEntity(): CoreEntityInterface;
+    public function getEntity();
 
     /**
      * Push criteria
