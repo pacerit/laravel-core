@@ -14,7 +14,8 @@
         "php": "^7.1",
         "ext-json": "^1.5",
         "ext-libxml": "*",
-        "ext-simplexml": "*"
+        "ext-simplexml": "*",
+        "yajra/laravel-datatables-oracle": "~9.0"
     },
     "license": "MIT",
     "authors": [

@@ -120,6 +120,44 @@ public function register()
     $this->app->bind(ExampleRepositoryInterfaceclass, ExampleRepository::class);
 }
 ```
+#### Using repositories
+To use Repository in controller or other class you can use dependency injection or Container. Below is sample code of
+using service in controller.
+```
+class ExampleController extends Controller {
+
+    /**
+     * @var ExampleRepositoryInterface $exampleRepository
+     */
+    protected $exampleRepository;
+
+    public function __construct(ExampleRepositorynterface $exampleRepository){
+        $this->exampleRepository = $exampleRepository;
+    }
+
+    ....
+}
+```
+If you already using CoreService implementation, you can use getRepository() method to get instance of CoreRepository
+for Entity that Service belong.
+##### Available methods
+* makeEntity() - make new entity instance
+* getEntity() - return previously set entity instance
+* pushCriteria() - push new criteria to use in query (passed class must be implementation of CoreRepositoryCriteria)
+* popCriteria() - delete given criteria from use (if exist)
+* getCriteria() - return collection of actualy set criteria
+* applyCriteria() - apply criteria to use in query
+* skipCriteria() - skip criteria in query
+* clearCriteria() - clear criteria colleciton - delete all pushed criterias
+* all(array $columns) - get all records
+* get(array $columns) - get records (with criteria)
+* create(array $parameters) - create new entity record
+* update(int $id, array $parameters) - update entity by ID
+* delete(int $id) - delete entity record by ID
+* firstOrNew(array $where) - return first entity record if found, otherwise return new entity
+* firstOrNull(array $where) - return first entity record if found, otherwise return null
+* datatable() - return EloquentDataTable instance for records
+* orderBy(string $column, string $direction) - order records by column
 
 ### Services implementation
 To use Service, create service class that:
@@ -174,7 +212,7 @@ class ExampleController extends Controller {
     ....
 }
 ```
-#### Available methods
+##### Available methods
 * setRepository() - set repository to use in service. Passing object must be implementation of CoreRepositoryInterface
 * getRepository() - return previously set repository class instance
 * setFormatter() - set formatter class to use in service. Passing object must be implementation of 
