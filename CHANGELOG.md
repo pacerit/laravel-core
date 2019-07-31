@@ -1,5 +1,6 @@
 # Changelog
 ## v.1.0.2
+    - update documentation
     - extend CoreRepository
         * add datatable() function, producing datatable response
         * add orderBy() function
