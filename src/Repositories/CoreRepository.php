@@ -11,6 +11,7 @@ use PacerIT\LaravelCore\Repositories\Criteria\CoreRepositoryCriteria;
 use PacerIT\LaravelCore\Repositories\Criteria\Interfaces\CoreRepositoryCriteriaInterface;
 use PacerIT\LaravelCore\Repositories\Exceptions\RepositoryEntityException;
 use PacerIT\LaravelCore\Repositories\Interfaces\CoreRepositoryInterface;
+use Yajra\DataTables\EloquentDataTable;
 
 /**
  * Class CoreRepository
@@ -311,6 +312,37 @@ abstract class CoreRepository implements CoreRepositoryInterface
         }
 
         return $entity;
+    }
+
+    /**
+     * Make datatable response
+     *
+     * @param array $columns
+     * @return EloquentDataTable
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-07-31
+     */
+    public function datatable(array $columns): EloquentDataTable
+    {
+        $this->applyCriteria();
+
+        return datatables()->eloquent($this->getEntity()->select($columns));
+    }
+
+    /**
+     * Order by records
+     *
+     * @param string $column
+     * @param string $direction
+     * @return mixed
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-07-31
+     */
+    public function orderBy(string $column, string $direction = 'asc')
+    {
+        $this->entity = $this->getEntity()->orderBy($column, $direction);
+
+        return $this;
     }
 
 }
