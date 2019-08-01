@@ -152,12 +152,14 @@ for Entity that Service belong.
 * all(array $columns) - get all records
 * get(array $columns) - get records (with criteria)
 * create(array $parameters) - create new entity record
+* updateOrCreate(array $where, array $values) - update existing record, or create new
 * update(int $id, array $parameters) - update entity by ID
 * delete(int $id) - delete entity record by ID
 * firstOrNew(array $where) - return first entity record if found, otherwise return new entity
 * firstOrNull(array $where) - return first entity record if found, otherwise return null
 * datatable() - return EloquentDataTable instance for records
 * orderBy(string $column, string $direction) - order records by column
+* with($relations) - add relations sub-query
 
 ### Services implementation
 To use Service, create service class that:

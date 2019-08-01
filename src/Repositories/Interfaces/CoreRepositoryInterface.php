@@ -138,6 +138,17 @@ interface CoreRepositoryInterface
     public function create(array $parameters = []): CoreEntityInterface;
 
     /**
+     * Create new model or update existing
+     *
+     * @param array $where
+     * @param array $values
+     * @return CoreEntityInterface
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-08-01
+     */
+    public function updateOrCreate(array $where = [], array $values = []): CoreEntityInterface;
+
+    /**
      * Update entity
      *
      * @param integer $id
@@ -198,5 +209,15 @@ interface CoreRepositoryInterface
      * @since 2019-07-31
      */
     public function orderBy(string $column, string $direction = 'asc');
+
+    /**
+     * Relation sub-query
+     *
+     * @param array $relations
+     * @return CoreRepositoryInterface
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-08-01
+     */
+    public function with($relations): CoreRepositoryInterface;
 
 }

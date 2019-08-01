@@ -1,4 +1,8 @@
 # Changelog
+## v.1.0.3
+    - extend CoreRepository
+        * add updateOrCreate() function
+        * add with() function
 ## v.1.0.2
     - update documentation
     - extend CoreRepository
