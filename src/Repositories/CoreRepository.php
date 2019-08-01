@@ -249,6 +249,22 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
+     * Create new model or update existing
+     *
+     * @param array $where
+     * @param array $values
+     * @return CoreEntityInterface
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-08-01
+     */
+    public function updateOrCreate(array $where = [], array $values = []): CoreEntityInterface
+    {
+        $this->entity = $this->getEntity()->updateOrCreate($where, $values);
+
+        return $this->getEntity();
+    }
+
+    /**
      * Update entity
      *
      * @param integer $id
@@ -342,6 +358,21 @@ abstract class CoreRepository implements CoreRepositoryInterface
     public function orderBy(string $column, string $direction = 'asc')
     {
         $this->entity = $this->getEntity()->orderBy($column, $direction);
+
+        return $this;
+    }
+
+    /**
+     * Relation sub-query
+     *
+     * @param array $relations
+     * @return CoreRepositoryInterface
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-08-01
+     */
+    public function with($relations): CoreRepositoryInterface
+    {
+        $this->entity = $this->getEntity()->with($relations);
 
         return $this;
     }
