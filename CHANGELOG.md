@@ -1,4 +1,8 @@
 # Changelog
+## v.1.0.4
+    - extend CoreRepository
+        * add transactionBegin(), transactionCommit(), 
+        transactionRollback() methods
 ## v.1.0.3
     - extend CoreRepository
         * add updateOrCreate() function

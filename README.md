@@ -160,6 +160,9 @@ for Entity that Service belong.
 * datatable() - return EloquentDataTable instance for records
 * orderBy(string $column, string $direction) - order records by column
 * with($relations) - add relations sub-query
+* transactionBegin() - begin database transaction
+* transactionCommit() - commit transaction
+* transactionRollback() - rollback transaction
 
 ### Services implementation
 To use Service, create service class that:

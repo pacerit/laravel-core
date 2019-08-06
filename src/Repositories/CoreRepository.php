@@ -6,6 +6,7 @@ use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Container\Container;
+use Illuminate\Support\Facades\DB;
 use PacerIT\LaravelCore\Entities\CoreEntity;
 use PacerIT\LaravelCore\Entities\Interfaces\CoreEntityInterface;
 use PacerIT\LaravelCore\Repositories\Criteria\CoreRepositoryCriteria;
@@ -373,6 +374,48 @@ abstract class CoreRepository implements CoreRepositoryInterface
     public function with($relations): CoreRepositoryInterface
     {
         $this->entity = $this->getEntity()->with($relations);
+
+        return $this;
+    }
+
+    /**
+     * Begin database transaction
+     *
+     * @return CoreRepositoryInterface
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-08-06
+     */
+    public function transactionBegin(): CoreRepositoryInterface
+    {
+        DB::beginTransaction();
+
+        return $this;
+    }
+
+    /**
+     * Commit database transaction
+     *
+     * @return CoreRepositoryInterface
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-08-06
+     */
+    public function transactionCommit(): CoreRepositoryInterface
+    {
+        DB::commit();
+
+        return $this;
+    }
+
+    /**
+     * Rollback transaction
+     *
+     * @return CoreRepositoryInterface
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-08-06
+     */
+    public function transactionRollback(): CoreRepositoryInterface
+    {
+        DB::rollBack();
 
         return $this;
     }
