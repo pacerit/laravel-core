@@ -220,4 +220,31 @@ interface CoreRepositoryInterface
      */
     public function with($relations): CoreRepositoryInterface;
 
+    /**
+     * Begin database transaction
+     *
+     * @return CoreRepositoryInterface
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-08-06
+     */
+    public function transactionBegin(): CoreRepositoryInterface;
+
+    /**
+     * Commit database transaction
+     *
+     * @return CoreRepositoryInterface
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-08-06
+     */
+    public function transactionCommit(): CoreRepositoryInterface;
+
+    /**
+     * Rollback transaction
+     *
+     * @return CoreRepositoryInterface
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-08-06
+     */
+    public function transactionRollback(): CoreRepositoryInterface;
+
 }
