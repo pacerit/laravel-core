@@ -10,12 +10,15 @@
         "laravel"
     ],
     "require": {
-        "laravel/framework": "5.8.*",
         "php": "^7.1",
         "ext-json": "^1.5",
         "ext-libxml": "*",
         "ext-simplexml": "*",
-        "yajra/laravel-datatables-oracle": "~9.0"
+        "yajra/laravel-datatables-oracle": "~9.0",
+        "illuminate/contracts": "^5.8",
+        "illuminate/database": "^5.8",
+        "illuminate/support": "^5.8",
+        "illuminate/container": "^5.8"
     },
     "license": "MIT",
     "authors": [

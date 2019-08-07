@@ -4,6 +4,10 @@ Package of core classes that provide standardization in usage of Services, Repos
 
 ## Installation
     composer require pacerit/laravel-core
+### Version compatibility
+Laravel | Package
+:-------|:--------
+5.8.x   | 1.x.x
 
 ## Classes included
 
@@ -151,6 +155,7 @@ for Entity that Service belong.
 * clearCriteria() - clear criteria colleciton - delete all pushed criterias
 * all(array $columns) - get all records
 * get(array $columns) - get records (with criteria)
+* first(array $columns) - get first record (with criteria)
 * create(array $parameters) - create new entity record
 * updateOrCreate(array $where, array $values) - update existing record, or create new
 * update(int $id, array $parameters) - update entity by ID
@@ -163,6 +168,9 @@ for Entity that Service belong.
 * transactionBegin() - begin database transaction
 * transactionCommit() - commit transaction
 * transactionRollback() - rollback transaction
+* findWhere(array $where, array $columns) - return all records that match where array
+* findWhereIn(string $column, array $where, array $columns)
+* findWhereNotIn(string $column, array $where, array $columns)
 
 ### Services implementation
 To use Service, create service class that:
@@ -272,6 +280,7 @@ $this->exampleService->update();
 
 // Update model based on parameters.
 $this-exampleService->update(
+    1,
     [
         ExampleInterface::FIRST_VALUE => 2,
     ]
