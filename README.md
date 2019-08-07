@@ -184,6 +184,18 @@ for Entity that Service belong.
 * datatable() - return EloquentDataTable instance for records. In order to user with method,
 you must install suggested "yajra/laravel-datatables-oracle" package, and add "WithDatatable"
 trait in your repository of choice.
+
+##### Caching
+To use caching in CoreRepository implementation, simply add WithCache trait in your repository
+of choice. Trait will handle cache for methods:
+* all()
+* get()
+* first()
+* firstOrNew()
+* firstOrNull()
+* findWhere()
+* findWhereIn()
+* findWhereNotIn()
 ### Services implementation
 To use Service, create service class that:
 - Extend CoreService class

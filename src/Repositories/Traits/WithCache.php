@@ -30,6 +30,7 @@ trait WithCache
      *
      * @var integer $cacheTime
      */
+    // TODO: Move to Config file!
     protected $cacheTime = 3600;
 
     /**
@@ -37,6 +38,7 @@ trait WithCache
      *
      * @var array $guards
      */
+    // TODO: Move to config file!
     protected $guards = [
         'api',
         'web',
