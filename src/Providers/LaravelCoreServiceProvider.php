@@ -34,7 +34,7 @@ class LaravelCoreServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '../../resources/config/laravel-core.php' => config_path('laravel-core.php')
+            __DIR__ . '/../../resources/config/laravel-core.php' => config_path('laravel-core.php')
         ]);
     }
 
