@@ -4,6 +4,10 @@ Package of core classes that provide standardization in usage of Services, Repos
 
 ## Installation
     composer require pacerit/laravel-core
+### Version compatibility
+Laravel | Package
+:-------|:--------
+5.8.x   | 1.x.x
 
 ## Classes included
 
