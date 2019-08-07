@@ -7,7 +7,14 @@
 Package of core classes that provide standardization in usage of Services, Repositories etc. for Laravel framework.
 
 ## Installation
+You can install this package by composer:
+
     composer require pacerit/laravel-core
+    
+For more configuration, you can publish configuration file:
+    
+    php artisan vendor:publish --provider "PacerIT\LaravelCore\Providers\LaravelCoreServiceProvider"
+
 ### Version compatibility
 #### Laravel
 Framework | Package
@@ -153,7 +160,7 @@ class ExampleController extends Controller {
 ```
 If you already using CoreService implementation, you can use getRepository() method to get instance of CoreRepository
 for Entity that Service belong.
-##### Available methods
+#### Available methods
 * makeEntity() - make new entity instance
 * getEntity() - return previously set entity instance
 * pushCriteria() - push new criteria to use in query (passed class must be implementation of CoreRepositoryCriteria)
@@ -185,7 +192,13 @@ for Entity that Service belong.
 you must install suggested "yajra/laravel-datatables-oracle" package, and add "WithDatatable"
 trait in your repository of choice.
 
-##### Caching
+#### Caching
+___
+Information: In order to use Caching feature in repository, you must use cache driver that
+support tags. Actually "file" and "database" drivers are not supported. 
+    
+More information in [in laravel documentation](https://laravel.com/docs/5.8/cache#cache-tags).
+____
 To use caching in CoreRepository implementation, simply add WithCache trait in your repository
 of choice. Trait will handle cache for methods:
 * all()
@@ -196,6 +209,41 @@ of choice. Trait will handle cache for methods:
 * findWhere()
 * findWhereIn()
 * findWhereNotIn()
+
+Repository automatically flush cache, when method create(), updateOrCreate(), update(),
+delete() is call.
+
+##### Tag by user ID
+By default repository cache adding actual authenticated user ID as tag. That provide
+possibility to separate cached data among users. That feature is useful for entities
+strictly associated to User (i.e. Account operation, Account details), when cached
+data will be flushed for each user separately - not for all repository, with save
+resources.
+
+But for other entities (.i.e. Articles in CMS system), this solution can be annoying,
+so to disable this feature for selected repository call skipUserTag() method in __construct(). Example:
+```
+class ExampleRepository extends CoreRepository implements ExampleRepositoryInterface
+{
+    
+    use WithCache;
+
+    /**
+     * ExampleRepository constructor.
+     *
+     * @param Container $app
+     * @throws RepositoryEntityException
+     * @throws BindingResolutionException
+     */
+    public function __construct(Container $app)
+    {
+        parent::__construct($app);
+        $this->skipUserTag();
+    }
+
+}
+```
+
 ### Services implementation
 To use Service, create service class that:
 - Extend CoreService class
@@ -249,7 +297,7 @@ class ExampleController extends Controller {
     ....
 }
 ```
-##### Available methods
+#### Available methods
 * setRepository() - set repository to use in service. Passing object must be implementation of CoreRepositoryInterface
 * getRepository() - return previously set repository class instance
 * setFormatter() - set formatter class to use in service. Passing object must be implementation of 

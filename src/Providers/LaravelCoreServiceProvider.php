@@ -27,6 +27,18 @@ class LaravelCoreServiceProvider extends ServiceProvider
 {
 
     /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__ . '../../resources/config/laravel-core.php' => config_path('laravel-core.php')
+        ]);
+    }
+
+    /**
      * Register the service provider.
      *
      * @return void

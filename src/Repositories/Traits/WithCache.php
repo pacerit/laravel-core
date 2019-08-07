@@ -26,23 +26,11 @@ trait WithCache
     protected $skipCache = false;
 
     /**
-     * Cache time in seconds
+     * Determine if skipp auth user tag
      *
-     * @var integer $cacheTime
+     * @var bool $skipUserTag
      */
-    // TODO: Move to Config file!
-    protected $cacheTime = 3600;
-
-    /**
-     * Array of guard to search for actual authenticated user
-     *
-     * @var array $guards
-     */
-    // TODO: Move to config file!
-    protected $guards = [
-        'api',
-        'web',
-    ];
+    protected $skipUserTag = false;
 
     /**
      * Skip cache
@@ -54,6 +42,20 @@ trait WithCache
     public function skipCache(): CoreRepositoryInterface
     {
         $this->skipCache = true;
+
+        return $this;
+    }
+
+    /**
+     * Skip auth user tag
+     *
+     * @return CoreRepositoryInterface
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-08-07
+     */
+    public function skipUserTag(): CoreRepositoryInterface
+    {
+        $this->skipUserTag = true;
 
         return $this;
     }
@@ -79,27 +81,9 @@ trait WithCache
             '%s@%s_%s-%s',
             $method,
             $className,
-            $this->getAuthUserID(),
+            $this->getTag(),
             md5(serialize($parameters) . $criteria)
         );
-    }
-
-    /**
-     * Try to get actual authenticated user ID
-     *
-     * @return integer
-     * @author Wiktor Pacer <kontakt@pacerit.pl>
-     * @since 2019-08-07
-     */
-    protected function getAuthUserID(): int
-    {
-        foreach ($this->guards as $guard) {
-            if (auth($guard)->check()) {
-                return auth($guard)->user()->getAuthIdentifier();
-            }
-        }
-
-        return 0;
     }
 
     /**
@@ -143,9 +127,9 @@ trait WithCache
         $cacheKey = $this->getCacheKey(__FUNCTION__, func_get_args());
 
         // Store or get from cache.
-        return Cache::remember(
+        return Cache::tags([$this->getTag()])->remember(
             $cacheKey,
-            $this->cacheTime,
+            $this->getCacheTime(),
             function () use ($columns) {
                 return parent::all($columns);
             }
@@ -162,16 +146,16 @@ trait WithCache
      */
     public function get(array $columns = ['*']): Collection
     {
-        if ($this->skipCache) {
+        if ($this->skipCache || ! $this->cacheActive()) {
             return parent::get($columns);
         }
 
         $cacheKey = $this->getCacheKey(__FUNCTION__, func_get_args());
 
         // Store or get from cache.
-        return Cache::remember(
+        return Cache::tags([$this->getTag()])->remember(
             $cacheKey,
-            $this->cacheTime,
+            $this->getCacheTime(),
             function () use ($columns) {
                 return parent::get($columns);
             }
@@ -188,16 +172,16 @@ trait WithCache
      */
     public function first(array $columns = ['*']): Collection
     {
-        if ($this->skipCache) {
+        if ($this->skipCache || ! $this->cacheActive()) {
             return parent::frist($columns);
         }
 
         $cacheKey = $this->getCacheKey(__FUNCTION__, func_get_args());
 
         // Store or get from cache.
-        return Cache::remember(
+        return Cache::tags([$this->getTag()])->remember(
             $cacheKey,
-            $this->cacheTime,
+            $this->getCacheTime(),
             function () use ($columns) {
                 return parent::first($columns);
             }
@@ -214,16 +198,16 @@ trait WithCache
      */
     public function firstOrNew(array $where): CoreEntityInterface
     {
-        if ($this->skipCache) {
+        if ($this->skipCache || ! $this->cacheActive()) {
             return parent::firstOrNew($where);
         }
 
         $cacheKey = $this->getCacheKey(__FUNCTION__, func_get_args());
 
         // Store or get from cache.
-        return Cache::remember(
+        return Cache::tags([$this->getTag()])->remember(
             $cacheKey,
-            $this->cacheTime,
+            $this->getCacheTime(),
             function () use ($where) {
                 return parent::firstOrNew($where);
             }
@@ -240,16 +224,16 @@ trait WithCache
      */
     public function firstOrNull(array $where): ?CoreEntityInterface
     {
-        if ($this->skipCache) {
+        if ($this->skipCache || ! $this->cacheActive()) {
             return parent::firstOrNull($where);
         }
 
         $cacheKey = $this->getCacheKey(__FUNCTION__, func_get_args());
 
         // Store or get from cache.
-        return Cache::remember(
+        return Cache::tags([$this->getTag()])->remember(
             $cacheKey,
-            $this->cacheTime,
+            $this->getCacheTime(),
             function () use ($where) {
                 return parent::firstOrNull($where);
             }
@@ -267,16 +251,16 @@ trait WithCache
      */
     public function findWhere(array $where, array $columns = ['*']): Collection
     {
-        if ($this->skipCache) {
+        if ($this->skipCache || ! $this->cacheActive()) {
             return parent::findWhere($where, $columns);
         }
 
         $cacheKey = $this->getCacheKey(__FUNCTION__, func_get_args());
 
         // Store or get from cache.
-        return Cache::remember(
+        return Cache::tags([$this->getTag()])->remember(
             $cacheKey,
-            $this->cacheTime,
+            $this->getCacheTime(),
             function () use ($where, $columns) {
                 return parent::findWhere($where, $columns);
             }
@@ -295,16 +279,16 @@ trait WithCache
      */
     public function findWhereIn(string $column, array $where, array $columns = ['*']): Collection
     {
-        if ($this->skipCache) {
+        if ($this->skipCache || ! $this->cacheActive()) {
             return parent::findWhereIn($columns, $where, $columns);
         }
 
         $cacheKey = $this->getCacheKey(__FUNCTION__, func_get_args());
 
         // Store or get from cache.
-        return Cache::remember(
+        return Cache::tags([$this->getTag()])->remember(
             $cacheKey,
-            $this->cacheTime,
+            $this->getCacheTime(),
             function () use ($column, $where, $columns) {
                 return parent::findWhereIn($column, $where, $columns);
             }
@@ -323,20 +307,140 @@ trait WithCache
      */
     public function findWhereNotIn(string $column, array $where, array $columns = ['*']): Collection
     {
-        if ($this->skipCache) {
+        if ($this->skipCache || ! $this->cacheActive()) {
             return parent::findWhereNotIn($column, $where, $columns);
         }
 
         $cacheKey = $this->getCacheKey(__FUNCTION__, func_get_args());
 
         // Store or get from cache.
-        return Cache::remember(
+        return Cache::tags([$this->getTag()])->remember(
             $cacheKey,
-            $this->cacheTime,
+            $this->getCacheTime(),
             function () use ($column, $where, $columns) {
                 return parent::findWhereNotIn($column, $where, $columns);
             }
         );
+    }
+
+    /**
+     * Save new entity
+     *
+     * @param array $parameters
+     * @return CoreEntityInterface
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-07-10
+     */
+    public function create(array $parameters = []): CoreEntityInterface
+    {
+        Cache::tags([$this->getTag()])->flush();
+
+        return parent::create($parameters);
+    }
+
+    /**
+     * Create new model or update existing
+     *
+     * @param array $where
+     * @param array $values
+     * @return CoreEntityInterface
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-08-01
+     */
+    public function updateOrCreate(array $where = [], array $values = []): CoreEntityInterface
+    {
+        Cache::tags([$this->getTag()])->flush();
+
+        return parent::updateOrCreate($where, $values);
+    }
+
+    /**
+     * Update entity
+     *
+     * @param integer $id
+     * @param array $parameters
+     * @return CoreEntityInterface
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-07-10
+     */
+    public function update(int $id, array $parameters = []): CoreEntityInterface
+    {
+        Cache::tags([$this->getTag()])->flush();
+
+        return parent::update($id, $parameters);
+    }
+
+    /**
+     * Delete entity
+     *
+     * @param integer $id
+     * @return CoreRepositoryInterface
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-07-10
+     */
+    public function delete(int $id): CoreRepositoryInterface
+    {
+        Cache::tags([$this->getTag()])->flush();
+
+        return parent::delete($id);
+    }
+
+    /**
+     * Try to get actual authenticated user ID
+     *
+     * @return integer
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-08-07
+     */
+    private function getTag(): int
+    {
+        if ($this->skipUserTag) {
+            return 0;
+        }
+
+        foreach ($this->getCacheGuards() as $guard) {
+            if (auth($guard)->check()) {
+                return auth($guard)->user()->getAuthIdentifier();
+            }
+        }
+
+        return 0;
+    }
+
+    /**
+     * Checking if caching is activated in config file
+     *
+     * @return boolean
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-08-07
+     */
+    private function cacheActive(): bool
+    {
+        return config('laravel-core.repository.cache.active', false);
+    }
+
+    /**
+     * Get cache time (in seconds)
+     *
+     * @return integer
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-08-07
+     */
+    private function getCacheTime(): int
+    {
+        return (int)config('laravel-core.repository.cache.time', 3600);
+    }
+
+    /**
+     * Get cache guards to search for auth user ID
+     *
+     * @return array
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-08-07
+     */
+    private function getCacheGuards(): array
+    {
+        return config('laravel-core.repository.cache.guards', []);
     }
 
 }
