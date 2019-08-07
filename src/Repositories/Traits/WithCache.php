@@ -26,11 +26,21 @@ trait WithCache
     protected $skipCache = false;
 
     /**
-     * Cache time in minutes
+     * Cache time in seconds
      *
      * @var integer $cacheTime
      */
-    protected $cacheTime = 60;
+    protected $cacheTime = 3600;
+
+    /**
+     * Array of guard to search for actual authenticated user
+     *
+     * @var array $guards
+     */
+    protected $guards = [
+        'api',
+        'web',
+    ];
 
     /**
      * Skip cache
@@ -57,14 +67,6 @@ trait WithCache
      */
     protected function getCacheKey(string $method, array $parameters): string
     {
-        $userID = 'guest';
-
-        // Try get authenticated user.
-        $user = auth()->user();
-        if ($user !== null) {
-            $userID = $user->getAuthIdentifier();
-        }
-
         // Get actual repository class name.
         $className = class_basename($this);
 
@@ -75,9 +77,27 @@ trait WithCache
             '%s@%s_%s-%s',
             $method,
             $className,
-            $userID,
-            md5($parameters . $criteria)
+            $this->getAuthUserID(),
+            md5(serialize($parameters) . $criteria)
         );
+    }
+
+    /**
+     * Try to get actual authenticated user ID
+     *
+     * @return integer
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-08-07
+     */
+    protected function getAuthUserID(): int
+    {
+        foreach ($this->guards as $guard) {
+            if (auth($guard)->check()) {
+                return auth($guard)->user()->getAuthIdentifier();
+            }
+        }
+
+        return 0;
     }
 
     /**
@@ -121,7 +141,13 @@ trait WithCache
         $cacheKey = $this->getCacheKey(__FUNCTION__, func_get_args());
 
         // Store or get from cache.
-        return Cache::remember($cacheKey, $this->cacheTime, parent::all($columns));
+        return Cache::remember(
+            $cacheKey,
+            $this->cacheTime,
+            function () use ($columns) {
+                return parent::all($columns);
+            }
+        );
     }
 
     /**
@@ -141,7 +167,13 @@ trait WithCache
         $cacheKey = $this->getCacheKey(__FUNCTION__, func_get_args());
 
         // Store or get from cache.
-        return Cache::remember($cacheKey, $this->cacheTime, parent::get($columns));
+        return Cache::remember(
+            $cacheKey,
+            $this->cacheTime,
+            function () use ($columns) {
+                return parent::get($columns);
+            }
+        );
     }
 
     /**
@@ -161,7 +193,13 @@ trait WithCache
         $cacheKey = $this->getCacheKey(__FUNCTION__, func_get_args());
 
         // Store or get from cache.
-        return Cache::remember($cacheKey, $this->cacheTime, parent::first($columns));
+        return Cache::remember(
+            $cacheKey,
+            $this->cacheTime,
+            function () use ($columns) {
+                return parent::first($columns);
+            }
+        );
     }
 
     /**
@@ -181,7 +219,13 @@ trait WithCache
         $cacheKey = $this->getCacheKey(__FUNCTION__, func_get_args());
 
         // Store or get from cache.
-        return Cache::remember($cacheKey, $this->cacheTime, parent::firstOrNew($where));
+        return Cache::remember(
+            $cacheKey,
+            $this->cacheTime,
+            function () use ($where) {
+                return parent::firstOrNew($where);
+            }
+        );
     }
 
     /**
@@ -201,7 +245,13 @@ trait WithCache
         $cacheKey = $this->getCacheKey(__FUNCTION__, func_get_args());
 
         // Store or get from cache.
-        return Cache::remember($cacheKey, $this->cacheTime, parent::firstOrNull($where));
+        return Cache::remember(
+            $cacheKey,
+            $this->cacheTime,
+            function () use ($where) {
+                return parent::firstOrNull($where);
+            }
+        );
     }
 
     /**
@@ -222,7 +272,13 @@ trait WithCache
         $cacheKey = $this->getCacheKey(__FUNCTION__, func_get_args());
 
         // Store or get from cache.
-        return Cache::remember($cacheKey, $this->cacheTime, parent::findWhere($where, $columns));
+        return Cache::remember(
+            $cacheKey,
+            $this->cacheTime,
+            function () use ($where, $columns) {
+                return parent::findWhere($where, $columns);
+            }
+        );
     }
 
     /**
@@ -244,7 +300,13 @@ trait WithCache
         $cacheKey = $this->getCacheKey(__FUNCTION__, func_get_args());
 
         // Store or get from cache.
-        return Cache::remember($cacheKey, $this->cacheTime, parent::findWhereIn($column, $where, $columns));
+        return Cache::remember(
+            $cacheKey,
+            $this->cacheTime,
+            function () use ($column, $where, $columns) {
+                return parent::findWhereIn($column, $where, $columns);
+            }
+        );
     }
 
     /**
@@ -266,7 +328,13 @@ trait WithCache
         $cacheKey = $this->getCacheKey(__FUNCTION__, func_get_args());
 
         // Store or get from cache.
-        return Cache::remember($cacheKey, $this->cacheTime, parent::findWhereNotIn($column, $where, $columns));
+        return Cache::remember(
+            $cacheKey,
+            $this->cacheTime,
+            function () use ($column, $where, $columns) {
+                return parent::findWhereNotIn($column, $where, $columns);
+            }
+        );
     }
 
 }
