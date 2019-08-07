@@ -1,4 +1,10 @@
 # Changelog
+## v.1.0.5
+    - extend CoreRepository
+        * add first() function
+        * add findWhere() function
+        * add findWhereIn() function
+        * add findWhereNotIn() function
 ## v.1.0.4
     - extend CoreRepository
         * add transactionBegin(), transactionCommit(), 

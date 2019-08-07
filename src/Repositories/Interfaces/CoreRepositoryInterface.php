@@ -128,6 +128,16 @@ interface CoreRepositoryInterface
     public function get(array $columns = ['*']): Collection;
 
     /**
+     * Get first record
+     *
+     * @param array $columns
+     * @return Collection
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-08-07
+     */
+    public function first(array $columns = ['*']): Collection;
+
+    /**
      * Save new entity
      *
      * @param array $parameters
@@ -246,5 +256,40 @@ interface CoreRepositoryInterface
      * @since 2019-08-06
      */
     public function transactionRollback(): CoreRepositoryInterface;
+
+    /**
+     * Find where
+     *
+     * @param array $where
+     * @param array $columns
+     * @return Collection
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-08-07
+     */
+    public function findWhere(array $where, array $columns = ['*']): Collection;
+
+    /**
+     * Find where In
+     *
+     * @param string $column
+     * @param array $where
+     * @param array $columns
+     * @return Collection
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-08-07
+     */
+    public function findWhereIn(string $column, array $where, array $columns = ['*']): Collection;
+
+    /**
+     * Find where not In
+     *
+     * @param string $column
+     * @param array $where
+     * @param array $columns
+     * @return Collection
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-08-07
+     */
+    public function findWhereNotIn(string $column, array $where, array $columns = ['*']): Collection;
 
 }
