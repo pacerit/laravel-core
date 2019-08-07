@@ -1,4 +1,8 @@
 # Laravel Core
+![GitHub tag (latest by date)](https://img.shields.io/github/tag-date/pacerit/laravel-core?label=Version)
+![GitHub](https://img.shields.io/github/license/pacerit/laravel-core?label=License)
+![Packagist](https://img.shields.io/packagist/dt/pacerit/laravel-core?label=Downloads)
+![PHP from Packagist](https://img.shields.io/packagist/php-v/pacerit/laravel-core?label=PHP)
 
 Package of core classes that provide standardization in usage of Services, Repositories etc. for Laravel framework.
 
