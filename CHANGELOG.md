@@ -1,4 +1,10 @@
 # Changelog
+## v.1.1.0
+See upgrade guide!
+
+    - package is now compatibile with Lumen framework!
+    - move datatable() function from CoreRepository class into WithDatatable trait
+    - remove "yajra/laravel-datatables-oracle" package, and move it to suggest
 ## v.1.0.5
     - extend CoreRepository
         * add first() function
