@@ -348,21 +348,6 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Make datatable response
-     *
-     * @param array $columns
-     * @return EloquentDataTable
-     * @author Wiktor Pacer <kontakt@pacerit.pl>
-     * @since 2019-07-31
-     */
-    public function datatable(array $columns): EloquentDataTable
-    {
-        $this->applyCriteria();
-
-        return datatables()->eloquent($this->getEntity()->select($columns));
-    }
-
-    /**
      * Order by records
      *
      * @param string $column

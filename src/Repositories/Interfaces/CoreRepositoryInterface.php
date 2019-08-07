@@ -8,7 +8,6 @@ use Illuminate\Support\Collection;
 use PacerIT\LaravelCore\Entities\Interfaces\CoreEntityInterface;
 use PacerIT\LaravelCore\Repositories\Criteria\Interfaces\CoreRepositoryCriteriaInterface;
 use PacerIT\LaravelCore\Repositories\Exceptions\RepositoryEntityException;
-use Yajra\DataTables\EloquentDataTable;
 
 /**
  * Interface CoreRepositoryInterface
@@ -198,16 +197,6 @@ interface CoreRepositoryInterface
      * @since 2019-07-10
      */
     public function firstOrNull(array $where): ?CoreEntityInterface;
-
-    /**
-     * Make datatable response
-     *
-     * @param array $columns
-     * @return EloquentDataTable
-     * @author Wiktor Pacer <kontakt@pacerit.pl>
-     * @since 2019-07-31
-     */
-    public function datatable(array $columns): EloquentDataTable;
 
     /**
      * Order by records

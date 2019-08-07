@@ -5,9 +5,14 @@ Package of core classes that provide standardization in usage of Services, Repos
 ## Installation
     composer require pacerit/laravel-core
 ### Version compatibility
-Laravel | Package
-:-------|:--------
-5.8.x   | 1.x.x
+#### Laravel
+Framework | Package
+:---------|:--------
+5.8.x     | ^1.x.x
+#### Lumen
+Framework | Package
+:---------|:--------
+5.8.x     | ^1.1.x
 
 ## Classes included
 
@@ -162,7 +167,6 @@ for Entity that Service belong.
 * delete(int $id) - delete entity record by ID
 * firstOrNew(array $where) - return first entity record if found, otherwise return new entity
 * firstOrNull(array $where) - return first entity record if found, otherwise return null
-* datatable() - return EloquentDataTable instance for records
 * orderBy(string $column, string $direction) - order records by column
 * with($relations) - add relations sub-query
 * transactionBegin() - begin database transaction
@@ -172,6 +176,10 @@ for Entity that Service belong.
 * findWhereIn(string $column, array $where, array $columns)
 * findWhereNotIn(string $column, array $where, array $columns)
 
+##### Additional methods (Laravel only)
+* datatable() - return EloquentDataTable instance for records. In order to user with method,
+you must install suggested "yajra/laravel-datatables-oracle" package, and add "WithDatatable"
+trait in your repository of choice.
 ### Services implementation
 To use Service, create service class that:
 - Extend CoreService class

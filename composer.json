@@ -14,11 +14,13 @@
         "ext-json": "^1.5",
         "ext-libxml": "*",
         "ext-simplexml": "*",
-        "yajra/laravel-datatables-oracle": "~9.0",
         "illuminate/contracts": "^5.8",
         "illuminate/database": "^5.8",
         "illuminate/support": "^5.8",
         "illuminate/container": "^5.8"
+    },
+    "suggest": {
+        "yajra/laravel-datatables-oracle": "This package is required if you want to use datatable() function in CoreRepository class implementation (only for Laravel framework)"
     },
     "license": "MIT",
     "authors": [
