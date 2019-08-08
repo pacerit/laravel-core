@@ -29,7 +29,7 @@ class EntityNotFoundByID extends CoreException
     ) {
         $this->setMessage('Entity record of class :entity not found by ID :id!');
         $this->customizeMessage([':id' => $id , ':entity' => $entity]);
-        $this->setCode(500);
+        $this->setCode(404);
         parent::__construct($previous);
     }
 

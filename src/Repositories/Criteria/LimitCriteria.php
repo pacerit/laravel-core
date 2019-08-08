@@ -2,6 +2,7 @@
 
 namespace PacerIT\LaravelCore\Repositories\Criteria;
 
+use Illuminate\Database\Eloquent\Builder;
 use PacerIT\LaravelCore\Entities\Interfaces\CoreEntityInterface;
 
 /**
@@ -33,12 +34,12 @@ class LimitCriteria extends CoreRepositoryCriteria
     /**
      * Apply criteria on entity
      *
-     * @param CoreEntityInterface $entity
-     * @return CoreEntityInterface
+     * @param CoreEntityInterface|Builder $entity
+     * @return CoreEntityInterface|Builder
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      * @since 2019-07-05
      */
-    public function apply(CoreEntityInterface $entity): CoreEntityInterface
+    public function apply($entity)
     {
         return $entity->limit($this->limit);
     }

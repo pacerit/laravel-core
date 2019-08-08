@@ -1,4 +1,7 @@
 # Changelog
+## v.1.1.2
+    - fix CoreRepositoryCriteriaInterface implementation
+    - update error codes for CoreRepository exceptions
 ## v.1.1.1
     - add WithCache trait that handle repository cache
     - update LICENSE.md file

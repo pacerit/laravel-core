@@ -37,7 +37,7 @@ class EntityNotFoundByKey extends CoreException
                 ':entity' => $entity
             ]
         );
-        $this->setCode(500);
+        $this->setCode(404);
         parent::__construct($previous);
     }
 
