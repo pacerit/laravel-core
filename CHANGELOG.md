@@ -1,4 +1,8 @@
 # Changelog
+## v.1.1.1
+    - add WithCache trait that handle repository cache
+    - update LICENSE.md file
+    - update README.md file
 ## v.1.1.0
 See upgrade guide!
 
