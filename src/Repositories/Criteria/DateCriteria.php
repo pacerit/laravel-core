@@ -2,6 +2,7 @@
 
 namespace PacerIT\LaravelCore\Repositories\Criteria;
 
+use Illuminate\Database\Eloquent\Builder;
 use PacerIT\LaravelCore\Entities\CoreEntity;
 use PacerIT\LaravelCore\Entities\Interfaces\CoreEntityInterface;
 
@@ -46,12 +47,12 @@ class DateCriteria extends CoreRepositoryCriteria
     /**
      * Apply criteria on entity
      *
-     * @param CoreEntityInterface $entity
-     * @return CoreEntityInterface
+     * @param CoreEntityInterface|Builder $entity
+     * @return CoreEntityInterface|Builder
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      * @since 2019-07-05
      */
-    public function apply(CoreEntityInterface $entity): CoreEntityInterface
+    public function apply($entity)
     {
         if ($this->dateFrom !== null) {
             $entity = $entity->where(CoreEntity::CREATED_AT, '>=', $this->dateFrom);
