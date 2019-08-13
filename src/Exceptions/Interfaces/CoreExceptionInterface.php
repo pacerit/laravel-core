@@ -1,6 +1,6 @@
 <?php
 
-namespace PacerIT\LaravelCore\Interfaces;
+namespace PacerIT\LaravelCore\Exceptions\Interfaces;
 
 /**
  * Interface CoreExceptionInterface.

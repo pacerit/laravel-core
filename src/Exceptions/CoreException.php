@@ -3,7 +3,7 @@
 namespace PacerIT\LaravelCore\Exceptions;
 
 use Exception;
-use PacerIT\LaravelCore\Interfaces\CoreExceptionInterface;
+use PacerIT\LaravelCore\Exceptions\Interfaces\CoreExceptionInterface;
 use Throwable;
 
 /**

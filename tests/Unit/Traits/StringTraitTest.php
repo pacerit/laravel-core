@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 use ReflectionException;
 
 /**
- * Class StringTraitTest
+ * Class StringTraitTest.
  *
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  *
@@ -36,7 +36,7 @@ class StringTraitTest extends TestCase
     }
 
     /**
-     * Test isJon function with valid JSON
+     * Test isJon function with valid JSON.
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
@@ -48,7 +48,7 @@ class StringTraitTest extends TestCase
     }
 
     /**
-     * Test isJon function with not valid JSON
+     * Test isJon function with not valid JSON.
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
@@ -60,7 +60,7 @@ class StringTraitTest extends TestCase
     }
 
     /**
-     * Test remove spaces function
+     * Test remove spaces function.
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *

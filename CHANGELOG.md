@@ -4,6 +4,7 @@
     - improve code style format - StyleCI
     - add first tests
     - integration with TravisCI
+    - fix CoreExceptionInterface namespace
 
 ## v.1.1.2
     - fix CoreRepositoryCriteriaInterface implementation

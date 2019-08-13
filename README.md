@@ -433,6 +433,10 @@ instance of class (.i.e. from dependency injection) - it's up to you.
 
 Go to the [Changelog](CHANGELOG.md) for a full change history of the package.
 
+## Testing
+
+    composer test
+
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within package, please send an e-mail to Wiktor Pacer
