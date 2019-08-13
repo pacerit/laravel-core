@@ -6,25 +6,23 @@ use Illuminate\Database\Eloquent\Builder;
 use PacerIT\LaravelCore\Entities\Interfaces\CoreEntityInterface;
 
 /**
- * Class LimitCriteria
+ * Class LimitCriteria.
  *
- * @package PacerIT\LaravelCore\Repositories\Criteria
  * @author Wiktor Pacer <kontakt@pacerit.pl>
+ *
  * @since 2019-07-31
  */
 class LimitCriteria extends CoreRepositoryCriteria
 {
-
     /**
-     * @var int $limit
+     * @var int
      */
     protected $limit;
-
 
     /**
      * LimitCriteria constructor.
      *
-     * @param integer $limit
+     * @param int $limit
      */
     public function __construct(int $limit)
     {
@@ -32,16 +30,18 @@ class LimitCriteria extends CoreRepositoryCriteria
     }
 
     /**
-     * Apply criteria on entity
+     * Apply criteria on entity.
      *
      * @param CoreEntityInterface|Builder $entity
+     *
      * @return CoreEntityInterface|Builder
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function apply($entity)
     {
         return $entity->limit($this->limit);
     }
-
 }

@@ -17,15 +17,14 @@ use PacerIT\LaravelCore\Services\CoreService;
 use PacerIT\LaravelCore\Services\Interfaces\CoreServiceInterface;
 
 /**
- * Class LaravelCoreServiceProvider
+ * Class LaravelCoreServiceProvider.
  *
- * @package PacerIT\LaravelCore\Providers
  * @author Wiktor Pacer <kontakt@pacerit.pl>
+ *
  * @since 2019-07-05
  */
 class LaravelCoreServiceProvider extends ServiceProvider
 {
-
     /**
      * Bootstrap any application services.
      *
@@ -33,9 +32,9 @@ class LaravelCoreServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $path = __DIR__ . '/../../resources/config/laravel-core.php';
+        $path = __DIR__.'/../../resources/config/laravel-core.php';
         $this->publishes([
-            $path => $this->app->configPath('laravel-core.php')
+            $path => $this->app->configPath('laravel-core.php'),
         ]);
 
         $this->mergeConfigFrom($path, 'laravel-core');
@@ -64,5 +63,4 @@ class LaravelCoreServiceProvider extends ServiceProvider
         // Formatters.
         $this->app->bind(CoreFormatterInterface::class, CoreFormatter::class);
     }
-
 }

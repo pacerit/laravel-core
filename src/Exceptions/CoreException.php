@@ -7,32 +7,31 @@ use PacerIT\LaravelCore\Interfaces\CoreExceptionInterface;
 use Throwable;
 
 /**
- * Class CoreException
+ * Class CoreException.
  *
- * @package Modules\Core\Exceptions
  * @author Wiktor Pacer <kontakt@pacerit.pl>
+ *
  * @since 02.09.2018
  */
 abstract class CoreException extends Exception implements CoreExceptionInterface
 {
-
     /**
-     * @var string $message
+     * @var string
      */
     protected $message;
 
     /**
-     * @var integer $code
+     * @var int
      */
     protected $code;
 
     /**
-     * @var string $file
+     * @var string
      */
     protected $file;
 
     /**
-     * @var integer $line
+     * @var int
      */
     protected $line;
 
@@ -47,11 +46,14 @@ abstract class CoreException extends Exception implements CoreExceptionInterface
     }
 
     /**
-     * Set message of exception
+     * Set message of exception.
      *
      * @param string $message
+     *
      * @return CoreExceptionInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function setMessage(string $message): CoreExceptionInterface
@@ -62,11 +64,14 @@ abstract class CoreException extends Exception implements CoreExceptionInterface
     }
 
     /**
-     * Create custom message with given parameters
+     * Create custom message with given parameters.
      *
      * @param array $parameters
+     *
      * @return CoreExceptionInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function customizeMessage(array $parameters): CoreExceptionInterface
@@ -75,11 +80,14 @@ abstract class CoreException extends Exception implements CoreExceptionInterface
     }
 
     /**
-     * Set code of exception
+     * Set code of exception.
      *
-     * @param integer $code
+     * @param int $code
+     *
      * @return CoreExceptionInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function setCode(int $code): CoreExceptionInterface
@@ -88,5 +96,4 @@ abstract class CoreException extends Exception implements CoreExceptionInterface
 
         return $this;
     }
-
 }

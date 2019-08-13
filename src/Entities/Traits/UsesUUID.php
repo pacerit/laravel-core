@@ -8,35 +8,37 @@ use PacerIT\LaravelCore\Entities\Interfaces\UUIDInterface;
 
 /**
  * Trait UsesUUD
- * This trait can be only used in classes that extend CoreEntity class
+ * This trait can be only used in classes that extend CoreEntity class.
  *
- * @package PacerIT\LaravelCore\Traits
  * @author Wiktor Pacer <kontakt@pacerit.pl>
+ *
  * @since 2019-07-11
  */
 trait UsesUUID
 {
-
     /**
-     * Overwrite entity boot function
+     * Overwrite entity boot function.
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-11
      */
     protected static function bootUsesUUID()
     {
         static::creating(function ($model) {
-            if (! $model->getUUID() && $model instanceof UUIDInterface) {
+            if (!$model->getUUID() && $model instanceof UUIDInterface) {
                 $model->setUUID((string) Str::uuid());
             }
         });
     }
 
     /**
-     * GetUUID
+     * GetUUID.
      *
      * @return string|null
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-11
      */
     public function getUUID(): ?string
@@ -45,11 +47,14 @@ trait UsesUUID
     }
 
     /**
-     * Set UUID
+     * Set UUID.
      *
      * @param string $uuid
+     *
      * @return CoreEntityInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-11
      */
     public function setUUID(string $uuid): CoreEntityInterface
@@ -58,5 +63,4 @@ trait UsesUUID
 
         return $this;
     }
-
 }

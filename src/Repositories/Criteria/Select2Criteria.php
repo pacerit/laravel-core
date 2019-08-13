@@ -6,40 +6,39 @@ use Illuminate\Database\Eloquent\Builder;
 use PacerIT\LaravelCore\Entities\Interfaces\CoreEntityInterface;
 
 /**
- * Class Select2Criteria
+ * Class Select2Criteria.
  *
- * @package PacerIT\LaravelCore\Repositories\Criteria
  * @author Wiktor Pacer <kontakt@pacerit.pl>
+ *
  * @since 2019-07-31
  */
 class Select2Criteria extends CoreRepositoryCriteria
 {
-
     /**
-     * Phrase to search
+     * Phrase to search.
      *
-     * @var string $searchPhrase
+     * @var string
      */
     protected $searchPhrase;
 
     /**
-     * Array of fields to select
+     * Array of fields to select.
      *
-     * @var array $select
+     * @var array
      */
     protected $select;
 
     /**
-     * Fields to search
+     * Fields to search.
      *
-     * @var string $searchField
+     * @var string
      */
     protected $searchField;
 
     /**
-     * Limit for query
+     * Limit for query.
      *
-     * @var integer $limit
+     * @var int
      */
     protected $limit;
 
@@ -47,9 +46,9 @@ class Select2Criteria extends CoreRepositoryCriteria
      * Select2Criteria constructor.
      *
      * @param string $searchPhrase
-     * @param array $select
+     * @param array  $select
      * @param string $searchField
-     * @param integer $limit
+     * @param int    $limit
      */
     public function __construct(
         string $searchPhrase,
@@ -64,18 +63,20 @@ class Select2Criteria extends CoreRepositoryCriteria
     }
 
     /**
-     * Apply criteria on entity
+     * Apply criteria on entity.
      *
      * @param CoreEntityInterface|Builder $entity
+     *
      * @return CoreEntityInterface|Builder
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function apply($entity)
     {
         return $entity->select($this->select)
-            ->where($this->searchField, 'like', '%' . $this->searchPhrase . '%')
+            ->where($this->searchField, 'like', '%'.$this->searchPhrase.'%')
             ->limit($this->limit);
     }
-
 }

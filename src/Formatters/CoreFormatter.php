@@ -7,26 +7,28 @@ use PacerIT\LaravelCore\Entities\Interfaces\CoreEntityInterface;
 use PacerIT\LaravelCore\Formatters\Interfaces\CoreFormatterInterface;
 
 /**
- * Class CoreFormatter
+ * Class CoreFormatter.
  *
- * @package PacerIT\LaravelCore\Formatters
  * @author Wiktor Pacer <kontakt@pacerit.pl>
+ *
  * @since 2019-07-10
  */
 abstract class CoreFormatter implements CoreFormatterInterface
 {
-
     /**
-     * @var CoreEntityInterface $entity
+     * @var CoreEntityInterface
      */
     protected $entity;
 
     /**
-     * Set model to format
+     * Set model to format.
      *
      * @param CoreEntityInterface $entity
+     *
      * @return CoreFormatterInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
     public function setModel(CoreEntityInterface $entity): CoreFormatterInterface
@@ -37,10 +39,12 @@ abstract class CoreFormatter implements CoreFormatterInterface
     }
 
     /**
-     * Return formatted entity as array
+     * Return formatted entity as array.
      *
      * @return array
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
     public function toArray(): array
@@ -49,15 +53,16 @@ abstract class CoreFormatter implements CoreFormatterInterface
     }
 
     /**
-     * Return entity fields as collection
+     * Return entity fields as collection.
      *
      * @return Collection
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
     public function toCollection(): Collection
     {
         return collect($this->getFields());
     }
-
 }
