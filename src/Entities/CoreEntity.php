@@ -10,13 +10,12 @@ use PacerIT\LaravelCore\Entities\Interfaces\CoreEntityInterface;
  * Base class of the all models in application/modules. New models
  * must extend this class.
  *
- * @package PacerIT\LaravelCore\Entities
  * @author Wiktor Pacer <kontakt@pacerit.pl>
+ *
  * @since 2019-07-05
  */
 abstract class CoreEntity extends Model implements CoreEntityInterface
 {
-
     /**
      * The attributes that should be cast to native types.
      * This is the sample of this array. This should be copied
@@ -38,10 +37,12 @@ abstract class CoreEntity extends Model implements CoreEntityInterface
     protected $fillable = [];
 
     /**
-     * Get ID of the entity
+     * Get ID of the entity.
      *
-     * @return integer|null
+     * @return int|null
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function getID(): ?int
@@ -50,11 +51,14 @@ abstract class CoreEntity extends Model implements CoreEntityInterface
     }
 
     /**
-     * Set ID of the entity
+     * Set ID of the entity.
      *
-     * @param integer $id
+     * @param int $id
+     *
      * @return CoreEntityInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function setID(int $id): CoreEntityInterface
@@ -63,10 +67,12 @@ abstract class CoreEntity extends Model implements CoreEntityInterface
     }
 
     /**
-     * Get model created at date
+     * Get model created at date.
      *
      * @return string|null
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function getCreatedAtDate(): ?string
@@ -75,11 +81,14 @@ abstract class CoreEntity extends Model implements CoreEntityInterface
     }
 
     /**
-     * Set model created at date
+     * Set model created at date.
      *
      * @param string $date
+     *
      * @return CoreEntityInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function setCreatedAtDate(string $date): CoreEntityInterface
@@ -88,10 +97,12 @@ abstract class CoreEntity extends Model implements CoreEntityInterface
     }
 
     /**
-     * Get model updated at date
+     * Get model updated at date.
      *
      * @return string|null
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function getUpdatedAtDate(): ?string
@@ -100,16 +111,18 @@ abstract class CoreEntity extends Model implements CoreEntityInterface
     }
 
     /**
-     * Set model updated at date
+     * Set model updated at date.
      *
      * @param string $date
+     *
      * @return CoreEntityInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function setUpdatedAtDate(string $date): CoreEntityInterface
     {
         return $this->setAttribute(Model::UPDATED_AT, $date);
     }
-
 }

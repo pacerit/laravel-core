@@ -9,34 +9,35 @@ use PacerIT\LaravelCore\Repositories\Interfaces\CoreRepositoryInterface;
 use ReflectionObject;
 
 /**
- * Trait WithCache
+ * Trait WithCache.
  *
- * @package PacerIT\LaravelCore\Repositories\Traits
  * @author Wiktor Pacer <kontakt@pacerit.pl>
+ *
  * @since 2019-08-07
  */
 trait WithCache
 {
-
     /**
-     * Determine if cache will be skipped in query
+     * Determine if cache will be skipped in query.
      *
-     * @var bool $skipCache
+     * @var bool
      */
     protected $skipCache = false;
 
     /**
-     * Determine if skipp auth user tag
+     * Determine if skipp auth user tag.
      *
-     * @var bool $skipUserTag
+     * @var bool
      */
     protected $skipUserTag = false;
 
     /**
-     * Skip cache
+     * Skip cache.
      *
      * @return CoreRepositoryInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-08-07
      */
     public function skipCache(): CoreRepositoryInterface
@@ -47,10 +48,12 @@ trait WithCache
     }
 
     /**
-     * Skip auth user tag
+     * Skip auth user tag.
      *
      * @return CoreRepositoryInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-08-07
      */
     public function skipUserTag(): CoreRepositoryInterface
@@ -61,12 +64,15 @@ trait WithCache
     }
 
     /**
-     * Generate cache key
+     * Generate cache key.
      *
      * @param string $method
-     * @param array $parameters
+     * @param array  $parameters
+     *
      * @return string
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-08-07
      */
     protected function getCacheKey(string $method, array $parameters): string
@@ -82,15 +88,17 @@ trait WithCache
             $method,
             $className,
             $this->getTag(),
-            md5(serialize($parameters) . $criteria)
+            md5(serialize($parameters).$criteria)
         );
     }
 
     /**
-     * Serialize criteria pushed into repository
+     * Serialize criteria pushed into repository.
      *
      * @return string
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-08-07
      */
     protected function getSerializedCriteria(): string
@@ -101,7 +109,7 @@ trait WithCache
                     $reflectionClass = new ReflectionObject($criteria);
 
                     return [
-                        'criteria' => $reflectionClass->getName(),
+                        'criteria'   => $reflectionClass->getName(),
                         'parameters' => $reflectionClass->getProperties(),
                     ];
                 }
@@ -111,11 +119,14 @@ trait WithCache
 
     /**
      * Return eloquent collection of all records of entity
-     * Criteria are not apply in this query
+     * Criteria are not apply in this query.
      *
      * @param array $columns
+     *
      * @return Collection
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function all(array $columns = ['*']): Collection
@@ -137,16 +148,19 @@ trait WithCache
     }
 
     /**
-     * Return eloquent collection of matching records
+     * Return eloquent collection of matching records.
      *
      * @param array $columns
+     *
      * @return Collection
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function get(array $columns = ['*']): Collection
     {
-        if ($this->skipCache || ! $this->cacheActive()) {
+        if ($this->skipCache || !$this->cacheActive()) {
             return parent::get($columns);
         }
 
@@ -163,16 +177,19 @@ trait WithCache
     }
 
     /**
-     * Get first record
+     * Get first record.
      *
      * @param array $columns
+     *
      * @return Collection
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-08-07
      */
     public function first(array $columns = ['*']): Collection
     {
-        if ($this->skipCache || ! $this->cacheActive()) {
+        if ($this->skipCache || !$this->cacheActive()) {
             return parent::frist($columns);
         }
 
@@ -189,16 +206,19 @@ trait WithCache
     }
 
     /**
-     * Get first entity record or new entity instance
+     * Get first entity record or new entity instance.
      *
      * @param array $where
+     *
      * @return CoreEntityInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
     public function firstOrNew(array $where): CoreEntityInterface
     {
-        if ($this->skipCache || ! $this->cacheActive()) {
+        if ($this->skipCache || !$this->cacheActive()) {
             return parent::firstOrNew($where);
         }
 
@@ -215,16 +235,19 @@ trait WithCache
     }
 
     /**
-     * Get first entity record or null
+     * Get first entity record or null.
      *
      * @param array $where
+     *
      * @return CoreEntityInterface|null
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
     public function firstOrNull(array $where): ?CoreEntityInterface
     {
-        if ($this->skipCache || ! $this->cacheActive()) {
+        if ($this->skipCache || !$this->cacheActive()) {
             return parent::firstOrNull($where);
         }
 
@@ -241,17 +264,20 @@ trait WithCache
     }
 
     /**
-     * Find where
+     * Find where.
      *
      * @param array $where
      * @param array $columns
+     *
      * @return Collection
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-08-07
      */
     public function findWhere(array $where, array $columns = ['*']): Collection
     {
-        if ($this->skipCache || ! $this->cacheActive()) {
+        if ($this->skipCache || !$this->cacheActive()) {
             return parent::findWhere($where, $columns);
         }
 
@@ -268,18 +294,21 @@ trait WithCache
     }
 
     /**
-     * Find where In
+     * Find where In.
      *
      * @param string $column
-     * @param array $where
-     * @param array $columns
+     * @param array  $where
+     * @param array  $columns
+     *
      * @return Collection
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-08-07
      */
     public function findWhereIn(string $column, array $where, array $columns = ['*']): Collection
     {
-        if ($this->skipCache || ! $this->cacheActive()) {
+        if ($this->skipCache || !$this->cacheActive()) {
             return parent::findWhereIn($columns, $where, $columns);
         }
 
@@ -296,18 +325,21 @@ trait WithCache
     }
 
     /**
-     * Find where not In
+     * Find where not In.
      *
      * @param string $column
-     * @param array $where
-     * @param array $columns
+     * @param array  $where
+     * @param array  $columns
+     *
      * @return Collection
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-08-07
      */
     public function findWhereNotIn(string $column, array $where, array $columns = ['*']): Collection
     {
-        if ($this->skipCache || ! $this->cacheActive()) {
+        if ($this->skipCache || !$this->cacheActive()) {
             return parent::findWhereNotIn($column, $where, $columns);
         }
 
@@ -324,11 +356,14 @@ trait WithCache
     }
 
     /**
-     * Save new entity
+     * Save new entity.
      *
      * @param array $parameters
+     *
      * @return CoreEntityInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
     public function create(array $parameters = []): CoreEntityInterface
@@ -339,12 +374,15 @@ trait WithCache
     }
 
     /**
-     * Create new model or update existing
+     * Create new model or update existing.
      *
      * @param array $where
      * @param array $values
+     *
      * @return CoreEntityInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-08-01
      */
     public function updateOrCreate(array $where = [], array $values = []): CoreEntityInterface
@@ -355,12 +393,15 @@ trait WithCache
     }
 
     /**
-     * Update entity
+     * Update entity.
      *
-     * @param integer $id
+     * @param int   $id
      * @param array $parameters
+     *
      * @return CoreEntityInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
     public function update(int $id, array $parameters = []): CoreEntityInterface
@@ -371,11 +412,14 @@ trait WithCache
     }
 
     /**
-     * Delete entity
+     * Delete entity.
      *
-     * @param integer $id
+     * @param int $id
+     *
      * @return CoreRepositoryInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
     public function delete(int $id): CoreRepositoryInterface
@@ -386,10 +430,12 @@ trait WithCache
     }
 
     /**
-     * Try to get actual authenticated user ID
+     * Try to get actual authenticated user ID.
      *
-     * @return integer
+     * @return int
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-08-07
      */
     private function getTag(): int
@@ -408,10 +454,12 @@ trait WithCache
     }
 
     /**
-     * Checking if caching is activated in config file
+     * Checking if caching is activated in config file.
      *
-     * @return boolean
+     * @return bool
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-08-07
      */
     private function cacheActive(): bool
@@ -420,27 +468,30 @@ trait WithCache
     }
 
     /**
-     * Get cache time (in seconds)
+     * Get cache time (in seconds).
      *
-     * @return integer
+     * @return int
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-08-07
      */
     private function getCacheTime(): int
     {
-        return (int)config('laravel-core.repository.cache.time', 3600);
+        return (int) config('laravel-core.repository.cache.time', 3600);
     }
 
     /**
-     * Get cache guards to search for auth user ID
+     * Get cache guards to search for auth user ID.
      *
      * @return array
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-08-07
      */
     private function getCacheGuards(): array
     {
         return config('laravel-core.repository.cache.guards', []);
     }
-
 }

@@ -2,10 +2,10 @@
 
 namespace PacerIT\LaravelCore\Repositories;
 
+use Illuminate\Container\Container;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
-use Illuminate\Container\Container;
 use Illuminate\Support\Facades\DB;
 use PacerIT\LaravelCore\Entities\CoreEntity;
 use PacerIT\LaravelCore\Entities\Interfaces\CoreEntityInterface;
@@ -13,43 +13,41 @@ use PacerIT\LaravelCore\Repositories\Criteria\CoreRepositoryCriteria;
 use PacerIT\LaravelCore\Repositories\Criteria\Interfaces\CoreRepositoryCriteriaInterface;
 use PacerIT\LaravelCore\Repositories\Exceptions\RepositoryEntityException;
 use PacerIT\LaravelCore\Repositories\Interfaces\CoreRepositoryInterface;
-use Yajra\DataTables\EloquentDataTable;
 
 /**
- * Class CoreRepository
+ * Class CoreRepository.
  *
- * @package PacerIT\LaravelCore\Repositories
  * @author Wiktor Pacer <kontakt@pacerit.pl>
+ *
  * @since 2019-07-05
  */
 abstract class CoreRepository implements CoreRepositoryInterface
 {
-
     /**
-     * Application container
+     * Application container.
      *
-     * @var Container $app
+     * @var Container
      */
     protected $app;
 
     /**
-     * Entity class that will be use in repository
+     * Entity class that will be use in repository.
      *
-     * @var CoreEntityInterface $entity
+     * @var CoreEntityInterface
      */
     protected $entity;
 
     /**
-     * Criteria collection
+     * Criteria collection.
      *
-     * @var Collection $criteria
+     * @var Collection
      */
     protected $criteria;
 
     /**
-     * Determine if criteria will be skipped in query
+     * Determine if criteria will be skipped in query.
      *
-     * @var bool $skipCriteria
+     * @var bool
      */
     protected $skipCriteria = false;
 
@@ -57,6 +55,7 @@ abstract class CoreRepository implements CoreRepositoryInterface
      * CoreRepository constructor.
      *
      * @param Container $app
+     *
      * @throws RepositoryEntityException
      * @throws BindingResolutionException
      */
@@ -68,12 +67,15 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Make new entity instance
+     * Make new entity instance.
      *
-     * @return CoreRepositoryInterface
      * @throws RepositoryEntityException
      * @throws BindingResolutionException
+     *
+     * @return CoreRepositoryInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function makeEntity(): CoreRepositoryInterface
@@ -82,8 +84,8 @@ abstract class CoreRepository implements CoreRepositoryInterface
         $entity = $this->app->make($this->entity());
 
         // Checking instance.
-        if (! $entity instanceof CoreEntityInterface
-            || ! $entity instanceof CoreEntity) {
+        if (!$entity instanceof CoreEntityInterface
+            || !$entity instanceof CoreEntity) {
             throw new RepositoryEntityException($this->entity());
         }
 
@@ -93,10 +95,12 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Get entity instance
+     * Get entity instance.
      *
      * @return CoreEntityInterface|Builder
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function getEntity()
@@ -105,11 +109,14 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Push criteria
+     * Push criteria.
      *
      * @param CoreRepositoryCriteriaInterface $criteria
+     *
      * @return CoreRepositoryInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function pushCriteria(CoreRepositoryCriteriaInterface $criteria): CoreRepositoryInterface
@@ -120,11 +127,14 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Pop criteria
+     * Pop criteria.
      *
      * @param string $criteriaNamespace
+     *
      * @return CoreRepositoryInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function popCriteria(string $criteriaNamespace): CoreRepositoryInterface
@@ -137,10 +147,12 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Get criteria
+     * Get criteria.
      *
      * @return Collection
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function getCriteria(): Collection
@@ -149,10 +161,12 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Apply criteria to eloquent query
+     * Apply criteria to eloquent query.
      *
      * @return CoreRepositoryInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function applyCriteria(): CoreRepositoryInterface
@@ -176,11 +190,14 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Skip using criteria
+     * Skip using criteria.
      *
-     * @param boolean $skip
+     * @param bool $skip
+     *
      * @return CoreRepositoryInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function skipCriteria(bool $skip): CoreRepositoryInterface
@@ -191,10 +208,12 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Clear criteria array
+     * Clear criteria array.
      *
      * @return CoreRepositoryInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function clearCriteria(): CoreRepositoryInterface
@@ -206,11 +225,14 @@ abstract class CoreRepository implements CoreRepositoryInterface
 
     /**
      * Return eloquent collection of all records of entity
-     * Criteria are not apply in this query
+     * Criteria are not apply in this query.
      *
      * @param array $columns
+     *
      * @return Collection
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function all(array $columns = ['*']): Collection
@@ -219,11 +241,14 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Return eloquent collection of matching records
+     * Return eloquent collection of matching records.
      *
      * @param array $columns
+     *
      * @return Collection
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-05
      */
     public function get(array $columns = ['*']): Collection
@@ -234,11 +259,14 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Get first record
+     * Get first record.
      *
      * @param array $columns
+     *
      * @return Collection
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-08-07
      */
     public function first(array $columns = ['*']): Collection
@@ -249,11 +277,14 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Save new entity
+     * Save new entity.
      *
      * @param array $parameters
+     *
      * @return CoreEntityInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
     public function create(array $parameters = []): CoreEntityInterface
@@ -265,12 +296,15 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Create new model or update existing
+     * Create new model or update existing.
      *
      * @param array $where
      * @param array $values
+     *
      * @return CoreEntityInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-08-01
      */
     public function updateOrCreate(array $where = [], array $values = []): CoreEntityInterface
@@ -281,12 +315,15 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Update entity
+     * Update entity.
      *
-     * @param integer $id
+     * @param int   $id
      * @param array $parameters
+     *
      * @return CoreEntityInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
     public function update(int $id, array $parameters = []): CoreEntityInterface
@@ -299,11 +336,14 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Delete entity
+     * Delete entity.
      *
-     * @param integer $id
+     * @param int $id
+     *
      * @return CoreRepositoryInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
     public function delete(int $id): CoreRepositoryInterface
@@ -315,11 +355,14 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Get first entity record or new entity instance
+     * Get first entity record or new entity instance.
      *
      * @param array $where
+     *
      * @return CoreEntityInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
     public function firstOrNew(array $where): CoreEntityInterface
@@ -328,11 +371,14 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Get first entity record or null
+     * Get first entity record or null.
      *
      * @param array $where
+     *
      * @return CoreEntityInterface|null
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
     public function firstOrNull(array $where): ?CoreEntityInterface
@@ -348,12 +394,15 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Order by records
+     * Order by records.
      *
      * @param string $column
      * @param string $direction
+     *
      * @return mixed
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-31
      */
     public function orderBy(string $column, string $direction = 'asc')
@@ -364,11 +413,14 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Relation sub-query
+     * Relation sub-query.
      *
      * @param array $relations
+     *
      * @return CoreRepositoryInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-08-01
      */
     public function with($relations): CoreRepositoryInterface
@@ -379,10 +431,12 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Begin database transaction
+     * Begin database transaction.
      *
      * @return CoreRepositoryInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-08-06
      */
     public function transactionBegin(): CoreRepositoryInterface
@@ -393,10 +447,12 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Commit database transaction
+     * Commit database transaction.
      *
      * @return CoreRepositoryInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-08-06
      */
     public function transactionCommit(): CoreRepositoryInterface
@@ -407,10 +463,12 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Rollback transaction
+     * Rollback transaction.
      *
      * @return CoreRepositoryInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-08-06
      */
     public function transactionRollback(): CoreRepositoryInterface
@@ -421,12 +479,15 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Find where
+     * Find where.
      *
      * @param array $where
      * @param array $columns
+     *
      * @return Collection
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-08-07
      */
     public function findWhere(array $where, array $columns = ['*']): Collection
@@ -437,13 +498,16 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Find where In
+     * Find where In.
      *
      * @param string $column
-     * @param array $where
-     * @param array $columns
+     * @param array  $where
+     * @param array  $columns
+     *
      * @return Collection
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-08-07
      */
     public function findWhereIn(string $column, array $where, array $columns = ['*']): Collection
@@ -454,13 +518,16 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
-     * Find where not In
+     * Find where not In.
      *
      * @param string $column
-     * @param array $where
-     * @param array $columns
+     * @param array  $where
+     * @param array  $columns
+     *
      * @return Collection
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-08-07
      */
     public function findWhereNotIn(string $column, array $where, array $columns = ['*']): Collection
@@ -469,5 +536,4 @@ abstract class CoreRepository implements CoreRepositoryInterface
 
         return $this->getEntity()->whereNotIn($column, $where)->get($columns);
     }
-
 }

@@ -6,19 +6,18 @@ use PacerIT\LaravelCore\Exceptions\CoreException;
 use Throwable;
 
 /**
- * Class ScenarioRegistered
+ * Class ScenarioRegistered.
  *
- * @package PacerIT\LaravelCore\Traits\Exceptions
  * @author Wiktor Pacer <kontakt@pacerit.pl>
+ *
  * @since 2019-07-10
  */
 class ScenarioRegistered extends CoreException
 {
-
     /**
      * ScenarioRegistered constructor.
      *
-     * @param string|null $scenario
+     * @param string|null    $scenario
      * @param Throwable|null $previous
      */
     public function __construct(
@@ -30,5 +29,4 @@ class ScenarioRegistered extends CoreException
         $this->setCode(500);
         parent::__construct($previous);
     }
-
 }

@@ -5,22 +5,25 @@ namespace PacerIT\LaravelCore\Traits;
 use PacerIT\LaravelCore\Traits\Exceptions\InvalidXMLFormat;
 
 /**
- * Trait XMLTrait
+ * Trait XMLTrait.
  *
- * @package PacerIT\LaravelCore\Traits
  * @author Wiktor Pacer <kontakt@pacerit.pl>
+ *
  * @since 2019-07-26
  */
 trait XMLTrait
 {
-
     /**
-     * Convert XML to array
+     * Convert XML to array.
      *
      * @param string $xml
-     * @return array
+     *
      * @throws InvalidXMLFormat
+     *
+     * @return array
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-26
      */
     public function xmlToArray(string $xml): array
@@ -32,16 +35,21 @@ trait XMLTrait
         }
 
         $json = json_encode($data);
+
         return json_decode($json, true);
     }
 
     /**
-     * Get XML root tag
+     * Get XML root tag.
      *
      * @param string $xml
-     * @return string
+     *
      * @throws InvalidXMLFormat
+     *
+     * @return string
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-26
      */
     public function getXmlRootTag(string $xml): string
@@ -54,5 +62,4 @@ trait XMLTrait
 
         return $data->getName();
     }
-
 }

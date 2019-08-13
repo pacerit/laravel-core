@@ -39,6 +39,14 @@
             "PacerIT\\LaravelCore\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "PacerIT\\LaravelCore\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
     "extra": {
         "laravel": {
             "providers": [

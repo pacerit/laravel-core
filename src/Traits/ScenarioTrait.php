@@ -9,31 +9,34 @@ use PacerIT\LaravelCore\Traits\Exceptions\ScenarioNotRegistered;
 use PacerIT\LaravelCore\Traits\Exceptions\ScenarioRegistered;
 
 /**
- * Trait ScenarioTrait
+ * Trait ScenarioTrait.
  *
- * @package PacerIT\LaravelCore\Traits
  * @author Wiktor Pacer <kontakt@pacerit.pl>
+ *
  * @since 2019-07-10
  */
 trait ScenarioTrait
 {
-
     /**
-     * Array of registered scenarios
+     * Array of registered scenarios.
      *
-     * @var array $scenarios
+     * @var array
      */
     protected $scenarios = [];
 
     /**
-     * Register new scenario
+     * Register new scenario.
      *
      * @param string $scenario
      * @param $object
      * @param string|null $group
-     * @return boolean
+     *
      * @throws ScenarioRegistered
+     *
+     * @return bool
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
     public function registerScenario(string $scenario, $object, string $group = null): bool
@@ -43,7 +46,7 @@ trait ScenarioTrait
         }
 
         if ($group !== null) {
-            $scenario = $scenario . '_' . $group;
+            $scenario = $scenario.'_'.$group;
         }
 
         $this->scenarios[$scenario] = $object;
@@ -52,42 +55,49 @@ trait ScenarioTrait
     }
 
     /**
-     * Checking if scenario is registered
+     * Checking if scenario is registered.
      *
      * @param string|null $scenario
      * @param string|null $group
-     * @return boolean
+     *
+     * @return bool
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
     public function isRegistered(?string $scenario, string $group = null): bool
     {
         if ($group !== null) {
-            $scenario = $scenario . '_' . $group;
+            $scenario = $scenario.'_'.$group;
         }
 
         if ($scenario == null) {
             return false;
         }
 
-        return ArrayHelper::get($this->scenarios, $scenario);
+        return array_key_exists($scenario, $this->scenarios);
     }
 
     /**
-     * Get scenario instance
+     * Get scenario instance.
      *
      * @param string|null $scenario
      * @param string|null $group
-     * @return mixed
+     *
      * @throws ScenarioNotRegistered
      * @throws BindingResolutionException
+     *
+     * @return mixed
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
     public function getScenarioInstance(?string $scenario, string $group = null)
     {
         if ($group !== null) {
-            $scenario = $scenario . '_' . $group;
+            $scenario = $scenario.'_'.$group;
         }
 
         if (!$this->isRegistered($scenario)) {
@@ -98,10 +108,10 @@ trait ScenarioTrait
 
         if (is_string($scenarioInstance)) {
             $container = Container::getInstance();
+
             return $container->make($scenarioInstance);
         }
 
         return $scenarioInstance;
     }
-
 }

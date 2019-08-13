@@ -11,142 +11,176 @@ use PacerIT\LaravelCore\Services\Exceptions\EntityNotFoundByID;
 use PacerIT\LaravelCore\Services\Exceptions\EntityNotFoundByKey;
 
 /**
- * Interface CoreServiceInterface
+ * Interface CoreServiceInterface.
  *
- * @package PacerIT\LaravelCore\Services\Interfaces
  * @author Wiktor Pacer <kontakt@pacerit.pl>
+ *
  * @since 2019-07-10
  */
 interface CoreServiceInterface
 {
-
     /**
-     * Setting repository to use in service
+     * Setting repository to use in service.
      *
      * @param CoreRepositoryInterface $repository
+     *
      * @return CoreServiceInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
-    public function setRepository(CoreRepositoryInterface $repository): CoreServiceInterface;
+    public function setRepository(CoreRepositoryInterface $repository): self;
 
     /**
-     * Get previously set repository
+     * Get previously set repository.
      *
      * @return CoreRepositoryInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
     public function getRepository(): CoreRepositoryInterface;
 
     /**
-     * Set formatter class
+     * Set formatter class.
      *
      * @param CoreFormatterInterface $formatter
+     *
      * @return CoreServiceInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
-    public function setFormatter(CoreFormatterInterface $formatter): CoreServiceInterface;
+    public function setFormatter(CoreFormatterInterface $formatter): self;
 
     /**
-     * Get previously set formatter class
+     * Get previously set formatter class.
      *
      * @return CoreFormatterInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
     public function getFormatter(): CoreFormatterInterface;
 
     /**
-     * Set entity class
+     * Set entity class.
      *
      * @param CoreEntityInterface $entity
-     * @return CoreServiceInterface
-     * @author Wiktor Pacer <kontakt@pacerit.pl>
-     * @since 2019-07-10
-     */
-    public function setModel(CoreEntityInterface $entity): CoreServiceInterface;
-
-    /**
-     * Set entity class by given ID
      *
-     * @param integer|null $id
-     * @throws EntityNotFoundByID
      * @return CoreServiceInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
-    public function setModelByID(?int $id): CoreServiceInterface;
+    public function setModel(CoreEntityInterface $entity): self;
 
     /**
-     * Set entity by key
+     * Set entity class by given ID.
+     *
+     * @param int|null $id
+     *
+     * @throws EntityNotFoundByID
+     *
+     * @return CoreServiceInterface
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 2019-07-10
+     */
+    public function setModelByID(?int $id): self;
+
+    /**
+     * Set entity by key.
      *
      * @param string $key
      * @param $value
-     * @return CoreServiceInterface
+     *
      * @throws EntityNotFoundByKey
-     * @since 2019-07-26
-     * @author Wiktor Pacer <kontakt@pacerit.pl>
-     */
-    public function setModelByKey(string $key, $value): CoreServiceInterface;
-
-    /**
-     * Create and set new entity class
      *
      * @return CoreServiceInterface
+     *
+     * @since 2019-07-26
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     */
+    public function setModelByKey(string $key, $value): self;
+
+    /**
+     * Create and set new entity class.
+     *
      * @throws BindingResolutionException
      * @throws RepositoryEntityException
+     *
+     * @return CoreServiceInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 02.09.2018
      */
-    public function setNewModel(): CoreServiceInterface;
+    public function setNewModel(): self;
 
     /**
-     * Get previously set entity class
+     * Get previously set entity class.
      *
      * @return CoreEntityInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
     public function getModel(): CoreEntityInterface;
 
     /**
-     * Format entity using previously set formatter
+     * Format entity using previously set formatter.
      *
      * @return CoreFormatterInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
     public function format(): CoreFormatterInterface;
 
     /**
-     * Store new entity in database
+     * Store new entity in database.
      *
      * @param array|null $parameters
+     *
      * @return CoreServiceInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
-    public function create(?array $parameters = null): CoreServiceInterface;
+    public function create(?array $parameters = null): self;
 
     /**
-     * Update entity
+     * Update entity.
      *
      * @param array|null $parameters
-     * @return CoreServiceInterface
-     * @author Wiktor Pacer <kontakt@pacerit.pl>
-     * @since 2019-07-10
-     */
-    public function update(?array $parameters = null): CoreServiceInterface;
-
-    /**
-     * Delete entity from database
      *
      * @return CoreServiceInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-10
      */
-    public function delete(): CoreServiceInterface;
+    public function update(?array $parameters = null): self;
 
+    /**
+     * Delete entity from database.
+     *
+     * @return CoreServiceInterface
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 2019-07-10
+     */
+    public function delete(): self;
 }

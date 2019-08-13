@@ -3,36 +3,41 @@
 namespace PacerIT\LaravelCore\Traits;
 
 /**
- * Trait StringTrait
+ * Trait StringTrait.
  *
- * @package PacerIT\LaravelCore\Traits
  * @author Wiktor Pacer <kontakt@pacerit.pl>
+ *
  * @since 2019-07-11
  */
 trait StringTrait
 {
-
     /**
-     * Checking if given parameters is JSON
+     * Checking if given parameters is JSON.
      *
      * @param mixed $string
-     * @return boolean
+     *
+     * @return bool
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-11
      */
     public function isJson($string): bool
     {
         json_decode($string);
 
-        return (json_last_error() == JSON_ERROR_NONE);
+        return json_last_error() == JSON_ERROR_NONE;
     }
 
     /**
-     * Remove spaces from given string
+     * Remove spaces from given string.
      *
      * @param string|null $string
+     *
      * @return string
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-26
      */
     public function removeSpaces(?string $string): string
@@ -43,5 +48,4 @@ trait StringTrait
 
         return str_replace(' ', '', $string);
     }
-
 }

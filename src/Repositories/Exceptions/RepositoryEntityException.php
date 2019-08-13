@@ -6,19 +6,18 @@ use PacerIT\LaravelCore\Exceptions\CoreException;
 use Throwable;
 
 /**
- * Class RepositoryEntityException
+ * Class RepositoryEntityException.
  *
- * @package PacerIT\LaravelCore\Repositories\Exceptions
  * @author Wiktor Pacer <kontakt@pacerit.pl>
+ *
  * @since 2019-07-05
  */
 class RepositoryEntityException extends CoreException
 {
-
     /**
      * RepositoryEntityException constructor.
      *
-     * @param string|null $namespace
+     * @param string|null    $namespace
      * @param Throwable|null $previous
      */
     public function __construct(
@@ -30,5 +29,4 @@ class RepositoryEntityException extends CoreException
         $this->setCode(500);
         parent::__construct($previous);
     }
-
 }

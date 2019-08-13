@@ -9,22 +9,25 @@ use PacerIT\LaravelCore\Services\Interfaces\CoreServiceInterface;
 
 /**
  * Trait WithUUID
- * This trait can be only used in classes that extend CoreService class
+ * This trait can be only used in classes that extend CoreService class.
  *
- * @package PacerIT\LaravelCore\Services\Traits
  * @author Wiktor Pacer <kontakt@pacerit.pl>
+ *
  * @since 2019-07-11
  */
 trait WithUUID
 {
-
     /**
-     * Set entity class by given UUID
+     * Set entity class by given UUID.
      *
      * @param string|null $uuid
-     * @return CoreServiceInterface
+     *
      * @throws EntityNotFoundByUUID
+     *
+     * @return CoreServiceInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 2019-07-26
      */
     public function setModelByUUID(?string $uuid): CoreServiceInterface
@@ -40,5 +43,4 @@ trait WithUUID
 
         return $this;
     }
-
 }

@@ -12,36 +12,38 @@ use PacerIT\LaravelCore\Services\Exceptions\EntityNotFoundByKey;
 use PacerIT\LaravelCore\Services\Interfaces\CoreServiceInterface;
 
 /**
- * Class CoreService
+ * Class CoreService.
  *
- * @package PacerIT\LaravelCore\Services
  * @author Wiktor Pacer <kontakt@pacerit.pl>
+ *
  * @since 2019-07-10
  */
 abstract class CoreService implements CoreServiceInterface
 {
-
     /**
-     * @var CoreRepositoryInterface $repository
+     * @var CoreRepositoryInterface
      */
     protected $repository;
 
     /**
-     * @var CoreFormatterInterface $formatter
+     * @var CoreFormatterInterface
      */
     protected $formatter;
 
     /**
-     * @var CoreEntityInterface $entity
+     * @var CoreEntityInterface
      */
     protected $entity;
 
     /**
-     * Setting repository to use in service
+     * Setting repository to use in service.
      *
      * @param CoreRepositoryInterface $repository
+     *
      * @return CoreServiceInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 02.09.2018
      */
     public function setRepository(CoreRepositoryInterface $repository): CoreServiceInterface
@@ -52,10 +54,12 @@ abstract class CoreService implements CoreServiceInterface
     }
 
     /**
-     * Get previously set repository
+     * Get previously set repository.
      *
      * @return CoreRepositoryInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 02.09.2018
      */
     public function getRepository(): CoreRepositoryInterface
@@ -64,11 +68,14 @@ abstract class CoreService implements CoreServiceInterface
     }
 
     /**
-     * Set formatter class
+     * Set formatter class.
      *
      * @param CoreFormatterInterface $formatter
+     *
      * @return CoreServiceInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 02.09.2018
      */
     public function setFormatter(CoreFormatterInterface $formatter): CoreServiceInterface
@@ -79,10 +86,12 @@ abstract class CoreService implements CoreServiceInterface
     }
 
     /**
-     * Get previously set formatter class
+     * Get previously set formatter class.
      *
      * @return CoreFormatterInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 02.09.2018
      */
     public function getFormatter(): CoreFormatterInterface
@@ -91,11 +100,14 @@ abstract class CoreService implements CoreServiceInterface
     }
 
     /**
-     * Set entity class
+     * Set entity class.
      *
      * @param CoreEntityInterface $entity
+     *
      * @return CoreServiceInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 02.09.2018
      */
     public function setModel(CoreEntityInterface $entity): CoreServiceInterface
@@ -106,12 +118,16 @@ abstract class CoreService implements CoreServiceInterface
     }
 
     /**
-     * Set entity class by given ID
+     * Set entity class by given ID.
      *
-     * @param integer|null $id
-     * @return CoreServiceInterface
+     * @param int|null $id
+     *
      * @throws EntityNotFoundByID
+     *
+     * @return CoreServiceInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 02.09.2018
      */
     public function setModelByID(?int $id): CoreServiceInterface
@@ -129,13 +145,17 @@ abstract class CoreService implements CoreServiceInterface
     }
 
     /**
-     * Set entity by key
+     * Set entity by key.
      *
      * @param string $key
      * @param $value
-     * @return CoreServiceInterface
+     *
      * @throws EntityNotFoundByKey
+     *
+     * @return CoreServiceInterface
+     *
      * @since 2019-07-26
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      */
     public function setModelByKey(string $key, $value): CoreServiceInterface
@@ -153,12 +173,15 @@ abstract class CoreService implements CoreServiceInterface
     }
 
     /**
-     * Create and set new entity class
+     * Create and set new entity class.
      *
-     * @return CoreServiceInterface
      * @throws BindingResolutionException
      * @throws RepositoryEntityException
+     *
+     * @return CoreServiceInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 02.09.2018
      */
     public function setNewModel(): CoreServiceInterface
@@ -169,10 +192,12 @@ abstract class CoreService implements CoreServiceInterface
     }
 
     /**
-     * Get previously set entity class
+     * Get previously set entity class.
      *
      * @return CoreEntityInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 02.09.2018
      */
     public function getModel(): CoreEntityInterface
@@ -181,10 +206,12 @@ abstract class CoreService implements CoreServiceInterface
     }
 
     /**
-     * Format entity using previously set formatter
+     * Format entity using previously set formatter.
      *
      * @return CoreFormatterInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 02.09.2018
      */
     public function format(): CoreFormatterInterface
@@ -193,16 +220,19 @@ abstract class CoreService implements CoreServiceInterface
     }
 
     /**
-     * Store new entity in database
+     * Store new entity in database.
      *
      * @param array|null $parameters
+     *
      * @return CoreServiceInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 02.09.2018
      */
     public function create(?array $parameters = null): CoreServiceInterface
     {
-        if (! is_array($parameters)) {
+        if (!is_array($parameters)) {
             $parameters = $this->getModel()->toArray();
         }
 
@@ -212,16 +242,19 @@ abstract class CoreService implements CoreServiceInterface
     }
 
     /**
-     * Update entity
+     * Update entity.
      *
      * @param array|null $parameters
+     *
      * @return CoreServiceInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 02.09.2018
      */
     public function update(?array $parameters = null): CoreServiceInterface
     {
-        if (! is_array($parameters)) {
+        if (!is_array($parameters)) {
             $parameters = $this->getModel()->toArray();
         }
 
@@ -231,10 +264,12 @@ abstract class CoreService implements CoreServiceInterface
     }
 
     /**
-     * Delete entity from database
+     * Delete entity from database.
      *
      * @return CoreServiceInterface
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
      * @since 02.09.2018
      */
     public function delete(): CoreServiceInterface
@@ -243,5 +278,4 @@ abstract class CoreService implements CoreServiceInterface
 
         return $this;
     }
-
 }
