@@ -76,7 +76,7 @@ trait ScenarioTrait
             return false;
         }
 
-        return ArrayHelper::get($this->scenarios, $scenario);
+        return array_key_exists($scenario, $this->scenarios);
     }
 
     /**

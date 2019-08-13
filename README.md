@@ -6,7 +6,8 @@
 [![StyleCI](https://github.styleci.io/repos/199045038/shield?branch=master)](https://github.styleci.io/repos/199045038)
 [![Build Status](https://travis-ci.com/pacerit/laravel-core.svg?branch=master)](https://travis-ci.com/pacerit/laravel-core)
 
-Package of core classes that provide standardization in usage of Services, Repositories etc. for Laravel framework.
+Package of core classes that provide standardization in usage of Services, Repositories etc. for Laravel and
+Lumen framework.
 
 ## Installation
 You can install this package by composer:

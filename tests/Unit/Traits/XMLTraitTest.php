@@ -16,7 +16,6 @@ use ReflectionException;
  */
 class XMLTraitTest extends TestCase
 {
-
     /**
      * @var XMLTrait
      */
@@ -48,6 +47,7 @@ class XMLTraitTest extends TestCase
      * Test XMLtoArray function with valid XML string.
      *
      * @throws InvalidXMLFormat
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
      * @since 2019-08-13
@@ -66,6 +66,7 @@ class XMLTraitTest extends TestCase
      * Test XMLtoArray function with valid XML string.
      *
      * @throws InvalidXMLFormat
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
      * @since 2019-08-13
@@ -81,6 +82,7 @@ class XMLTraitTest extends TestCase
      * Test getXmlRootTag with valid XML.
      *
      * @throws InvalidXMLFormat
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
      * @since 2019-08-13
@@ -96,6 +98,7 @@ class XMLTraitTest extends TestCase
      * Test getXmlRootTag with not valid XML.
      *
      * @throws InvalidXMLFormat
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
      * @since 2019-08-13

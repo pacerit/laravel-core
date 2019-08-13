@@ -5,6 +5,7 @@
     - add first tests
     - integration with TravisCI
     - fix CoreExceptionInterface namespace
+    - fix isRegistered() function in ScenarioTrait class
 
 ## v.1.1.2
     - fix CoreRepositoryCriteriaInterface implementation
