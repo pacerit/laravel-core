@@ -202,6 +202,7 @@ List of criteria, provider by default with this package:
 * LimitCriteria
 * OrWhereCriteria
 * Select2Criteria - criteria useful when implementing Select2
+* OffsetCriteria
 
 #### Caching
 ___
