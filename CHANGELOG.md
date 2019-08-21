@@ -1,4 +1,6 @@
 # Changelog
+## v.1.1.4
+    - add OffsetCriteria
 ## v.1.1.3
     - dependency update
     - improve code style format - StyleCI
