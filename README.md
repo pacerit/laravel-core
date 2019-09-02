@@ -166,6 +166,7 @@ for Entity that Service belong.
 #### Available methods
 * makeEntity() - make new entity instance
 * getEntity() - return previously set entity instance
+* setEntity() - set entity instance
 * pushCriteria() - push new criteria to use in query (passed class must be implementation of CoreRepositoryCriteria)
 * popCriteria() - delete given criteria from use (if exist)
 * getCriteria() - return collection of actualy set criteria

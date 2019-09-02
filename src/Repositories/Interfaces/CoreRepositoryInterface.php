@@ -55,6 +55,19 @@ interface CoreRepositoryInterface
     public function getEntity();
 
     /**
+     * Set entity instance.
+     *
+     * @param CoreEntityInterface|Builder $entity
+     *
+     * @return CoreRepositoryInterface
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 2019-09-02
+     */
+    public function setEntity($entity): self;
+
+    /**
      * Push criteria.
      *
      * @param CoreRepositoryCriteriaInterface $criteria
