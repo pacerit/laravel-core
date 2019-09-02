@@ -109,6 +109,24 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
+     * Set entity instance.
+     *
+     * @param CoreEntityInterface|Builder $entity
+     *
+     * @return CoreRepositoryInterface
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 2019-09-02
+     */
+    public function setEntity($entity): CoreRepositoryInterface
+    {
+        $this->entity = $entity;
+
+        return $this;
+    }
+
+    /**
      * Push criteria.
      *
      * @param CoreRepositoryCriteriaInterface $criteria

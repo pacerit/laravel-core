@@ -1,4 +1,6 @@
 # Changelog
+## v.1.1.5
+    - add getEntity() function into CoreRepository class
 ## v.1.1.4
     - add OffsetCriteria
 ## v.1.1.3
