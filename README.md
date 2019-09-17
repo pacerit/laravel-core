@@ -23,10 +23,12 @@ For more configuration, you can publish configuration file:
 Framework | Package
 :---------|:--------
 5.8.x     | ^1.x.x
+6.0.x     | ^2.x.x
 #### Lumen
 Framework | Package
 :---------|:--------
 5.8.x     | ^1.1.x
+6.0.x     | ^2.x.x
 
 ## Classes included
 
