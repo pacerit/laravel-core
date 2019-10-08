@@ -366,10 +366,9 @@ interface CoreRepositoryInterface
     /**
      * Chunk query results.
      *
-     * @param int $limit
+     * @param int      $limit
      * @param callable $callback
-     *
-     * @param array $columns
+     * @param array    $columns
      *
      * @return bool
      *
