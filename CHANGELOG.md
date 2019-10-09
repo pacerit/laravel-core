@@ -1,4 +1,8 @@
 # Changelog
+## v.2.0.1
+    - add Chunk() function into CoreRepository class
+## v.2.0.0
+    - add compatibility for Laravel and Lumen version 6.0.x
 ## v.1.1.5
     - add getEntity() function into CoreRepository class
 ## v.1.1.4
