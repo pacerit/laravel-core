@@ -438,19 +438,19 @@ trait WithCache
      *
      * @since 2019-08-07
      */
-    private function getTag(): int
+    private function getTag(): string
     {
         if ($this->skipUserTag) {
-            return 0;
+            return class_basename($this).'_0';
         }
 
         foreach ($this->getCacheGuards() as $guard) {
             if (auth($guard)->check()) {
-                return auth($guard)->user()->getAuthIdentifier();
+                return class_basename($this).'_'.auth($guard)->user()->getAuthIdentifier();
             }
         }
 
-        return 0;
+        return class_basename($this).'_0';
     }
 
     /**
