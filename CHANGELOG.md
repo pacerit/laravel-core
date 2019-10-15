@@ -1,4 +1,7 @@
 # Changelog
+## v.2.0.2
+    - fix problem with flushing cache in Repository - now is flushed separatly for
+    each repository class
 ## v.2.0.1
     - add Chunk() function into CoreRepository class
 ## v.2.0.0
