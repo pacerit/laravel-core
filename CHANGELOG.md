@@ -1,4 +1,7 @@
 # Changelog
+## v.1.1.8
+    - update create cache key - now is namespace of repository class insted of name. This
+    prevent overwrite if you have multi repository with this same class name.
 ## v.1.1.7
     - fix problem with flushing cache in Repository - now is flushed separatly for
     each repository class
