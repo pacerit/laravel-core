@@ -171,13 +171,13 @@ interface CoreRepositoryInterface
      *
      * @param array $columns
      *
-     * @return Collection
+     * @return CoreEntityInterface|null
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
      * @since 2019-08-07
      */
-    public function first(array $columns = ['*']): Collection;
+    public function first(array $columns = ['*']): ?CoreEntityInterface;
 
     /**
      * Save new entity.
