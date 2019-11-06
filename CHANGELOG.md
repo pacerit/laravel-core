@@ -1,4 +1,6 @@
 # Changelog
+## v.1.1.9
+    - fix first() function in CoreRepository
 ## v.1.1.8
     - update create cache key - now is namespace of repository class insted of name. This
     prevent overwrite if you have multi repository with this same class name.
