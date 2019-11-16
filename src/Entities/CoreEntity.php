@@ -3,6 +3,7 @@
 namespace PacerIT\LaravelCore\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 use PacerIT\LaravelCore\Entities\Interfaces\CoreEntityInterface;
 
 /**
@@ -25,8 +26,8 @@ abstract class CoreEntity extends Model implements CoreEntityInterface
      */
     protected $casts = [
         CoreEntityInterface::ID => 'integer',
-        Model::CREATED_AT       => 'timestamps',
-        Model::UPDATED_AT       => 'timestamps',
+        Model::CREATED_AT       => 'timestamp',
+        Model::UPDATED_AT       => 'timestamp',
     ];
 
     /**
@@ -69,13 +70,13 @@ abstract class CoreEntity extends Model implements CoreEntityInterface
     /**
      * Get model created at date.
      *
-     * @return string|null
+     * @return Carbon|null
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
      * @since 2019-07-05
      */
-    public function getCreatedAtDate(): ?string
+    public function getCreatedAtDate(): ?Carbon
     {
         return $this->getAttribute(Model::CREATED_AT);
     }
@@ -99,13 +100,13 @@ abstract class CoreEntity extends Model implements CoreEntityInterface
     /**
      * Get model updated at date.
      *
-     * @return string|null
+     * @return Carbon|null
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
      * @since 2019-07-05
      */
-    public function getUpdatedAtDate(): ?string
+    public function getUpdatedAtDate(): ?Carbon
     {
         return $this->getAttribute(Model::UPDATED_AT);
     }

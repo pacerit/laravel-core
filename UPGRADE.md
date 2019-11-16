@@ -1,4 +1,9 @@
 # Upgrade guide
+## From 1.2.x to 1.2.x and higher
+Check uses of getCreatedAtDate() and getUpdatedAtDate() functions in implementations of CoreEntity class.
+
+This functions return now Illuminate\Support\Carbon instance instead of string.
+
 ## From 1.x.x to 1.1.x and higher
 These steps are only required if you use datatable() method in CoreRepository class implementation.
 Otherwise, nothing will change.
