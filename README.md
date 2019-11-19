@@ -191,6 +191,7 @@ for Entity that Service belong.
 * findWhereIn(string $column, array $where, array $columns)
 * findWhereNotIn(string $column, array $where, array $columns)
 * chunk(int $limit, callable $callback, array $columns) - chunk query results
+* count(array $columns) - count results
 
 ##### Additional methods (Laravel only)
 * datatable() - return EloquentDataTable instance for records. In order to user with method,

@@ -4,6 +4,7 @@ See upgrade guide!
 
     - getCreatedAtDate() and getUpdatedAtDate() in CoreEntity class, return now 
     Illuminate\Support\Carbon instance instead of string - this fix timestamp casting issue
+    - add count() function in CoreRepository class
 ## v.1.1.9
     - fix first() function in CoreRepository
 ## v.1.1.8
