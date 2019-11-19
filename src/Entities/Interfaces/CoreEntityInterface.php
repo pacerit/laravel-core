@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\QueueableEntity;
 use Illuminate\Contracts\Routing\UrlRoutable;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
+use Illuminate\Support\Carbon;
 use JsonSerializable;
 
 /**
@@ -47,13 +48,13 @@ interface CoreEntityInterface extends ArrayAccess, Arrayable, Jsonable, JsonSeri
     /**
      * Get model created at date.
      *
-     * @return string|null
+     * @return Carbon|null
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
      * @since 2019-07-05
      */
-    public function getCreatedAtDate(): ?string;
+    public function getCreatedAtDate(): ?Carbon;
 
     /**
      * Set model created at date.
@@ -71,13 +72,13 @@ interface CoreEntityInterface extends ArrayAccess, Arrayable, Jsonable, JsonSeri
     /**
      * Get model updated at date.
      *
-     * @return string|null
+     * @return Carbon|null
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
      * @since 2019-07-05
      */
-    public function getUpdatedAtDate(): ?string;
+    public function getUpdatedAtDate(): ?Carbon;
 
     /**
      * Set model updated at date.
