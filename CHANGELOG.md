@@ -1,4 +1,6 @@
 # Changelog
+## v.1.2.1
+    - fix first() function in WithCache trait
 ## v.1.2.0
 See upgrade guide!
 
