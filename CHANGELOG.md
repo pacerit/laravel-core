@@ -1,11 +1,12 @@
 # Changelog
+## v.2.1.1
+    - fix first() function in WithCache trait
 ## v.2.1.0
 See upgrade guide!
 
     - getCreatedAtDate() and getUpdatedAtDate() in CoreEntity class, return now 
     Illuminate\Support\Carbon instance instead of string - this fix timestamp casting issue
     - add count() function in CoreRepository class
-    - fix first() function in WithCache trait
 ## v.2.0.4
     - fix first() function in CoreRepository
 ## v.2.0.3
