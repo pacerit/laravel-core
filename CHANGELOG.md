@@ -1,4 +1,6 @@
 # Changelog
+## v.2.1.2
+    - fix misspell in first() function in WithCache trait
 ## v.2.1.1
     - fix first() function in WithCache trait
 ## v.2.1.0
