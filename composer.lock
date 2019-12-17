@@ -356,12 +356,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pacerit/laravel-repository.git",
-                "reference": "f908ee73235da0419b9f0bc53133d6ee27a4ad1c"
+                "reference": "e075b1807fe3ec0009a1a505351f16aeb7f5e8c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pacerit/laravel-repository/zipball/f908ee73235da0419b9f0bc53133d6ee27a4ad1c",
-                "reference": "f908ee73235da0419b9f0bc53133d6ee27a4ad1c",
+                "url": "https://api.github.com/repos/pacerit/laravel-repository/zipball/e075b1807fe3ec0009a1a505351f16aeb7f5e8c1",
+                "reference": "e075b1807fe3ec0009a1a505351f16aeb7f5e8c1",
                 "shasum": ""
             },
             "require": {
@@ -372,7 +372,7 @@
                 "illuminate/contracts": "^5.8",
                 "illuminate/database": "^5.8",
                 "illuminate/support": "^5.8",
-                "php": "^7.2"
+                "php": "^7.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "^7.5"
@@ -413,7 +413,7 @@
                 "pacerit",
                 "repository"
             ],
-            "time": "2019-12-17T07:58:05+00:00"
+            "time": "2019-12-17T08:34:33+00:00"
         },
         {
             "name": "psr/container",
