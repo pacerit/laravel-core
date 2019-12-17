@@ -5,10 +5,10 @@ namespace PacerIT\LaravelCore\Services\Interfaces;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use PacerIT\LaravelCore\Entities\Interfaces\CoreEntityInterface;
 use PacerIT\LaravelCore\Formatters\Interfaces\CoreFormatterInterface;
-use PacerIT\LaravelCore\Repositories\Exceptions\RepositoryEntityException;
-use PacerIT\LaravelCore\Repositories\Interfaces\CoreRepositoryInterface;
 use PacerIT\LaravelCore\Services\Exceptions\EntityNotFoundByID;
 use PacerIT\LaravelCore\Services\Exceptions\EntityNotFoundByKey;
+use PacerIT\LaravelRepository\Repositories\Exceptions\RepositoryEntityException;
+use PacerIT\LaravelRepository\Repositories\Interfaces\CoreRepositoryInterface;
 
 /**
  * Interface CoreServiceInterface.

@@ -17,7 +17,8 @@
         "illuminate/contracts": "^5.8",
         "illuminate/database": "^5.8",
         "illuminate/support": "^5.8",
-        "illuminate/container": "^5.8"
+        "illuminate/container": "^5.8",
+        "pacerit/laravel-repository": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.5"
