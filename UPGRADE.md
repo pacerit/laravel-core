@@ -1,4 +1,16 @@
 # Upgrade guide
+## From 2.1.x to 2.2.x and higher
+1. Namespace change - Check all implementation of your repositories, and change namespaces:
+
+    PacerIT\LaravelCore\Repositories\* -> PacerIT\LaravelRepository\Repositories\*
+    
+2. Delete firstOrNull() function - check usage of this functions. We recommed to replace
+it to firstOrNew().
+3. Configuration file - rename laravel-core.php config file to laravel-repository.php
+
+This affects to Repositories, Criteria and Exceptions. Other than mentioned repository
+functions are not changed.
+
 ## From 2.0.x to 2.1.x and higher
 Check uses of getCreatedAtDate() and getUpdatedAtDate() functions in implementations of CoreEntity class.
 

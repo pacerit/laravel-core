@@ -24,11 +24,7 @@ abstract class CoreEntity extends Model implements CoreEntityInterface
      *
      * @var array
      */
-    protected $casts = [
-        CoreEntityInterface::ID => 'integer',
-        Model::CREATED_AT       => 'timestamp',
-        Model::UPDATED_AT       => 'timestamp',
-    ];
+    protected $casts = [CoreEntityInterface::ID => 'integer'];
 
     /**
      * The attributes that are mass assignable.
