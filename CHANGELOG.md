@@ -1,7 +1,7 @@
 # Changelog
 ## v.2.2.0
 ### See upgrade guide!
-    - from now Reposiotry feature is delivered by pacerit/laravel-repository package
+    - from now Repository feature is delivered by pacerit/laravel-repository package
 ## v.2.1.2
     - fix misspell in first() function in WithCache trait
 ## v.2.1.1
