@@ -1,10 +1,13 @@
 # Changelog
+## v.2.2.0
+### See upgrade guide!
+    - from now Repository feature is delivered by pacerit/laravel-repository package
 ## v.2.1.2
     - fix misspell in first() function in WithCache trait
 ## v.2.1.1
     - fix first() function in WithCache trait
 ## v.2.1.0
-See upgrade guide!
+### See upgrade guide!
 
     - getCreatedAtDate() and getUpdatedAtDate() in CoreEntity class, return now 
     Illuminate\Support\Carbon instance instead of string - this fix timestamp casting issue
