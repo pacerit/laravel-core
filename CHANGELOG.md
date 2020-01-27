@@ -1,4 +1,6 @@
 # Changelog
+## v.2.2.1
+    - add ramsey/uuid package as required
 ## v.2.2.0
 ### See upgrade guide!
     - from now Repository feature is delivered by pacerit/laravel-repository package
