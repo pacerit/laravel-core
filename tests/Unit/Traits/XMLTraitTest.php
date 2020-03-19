@@ -35,7 +35,7 @@ class XMLTraitTest extends TestCase
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->mockTrait = $this->getMockForTrait(XMLTrait::class);
