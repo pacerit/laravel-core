@@ -1,4 +1,6 @@
 # Changelog
+## v.3.0.1
+    - ramsey/uuid is now suggested package instead of required
 ## v.3.0.0
     - update dependencies for Laravel and Lumen 7.x.x compatibility
 ## v.2.2.1

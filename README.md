@@ -78,6 +78,8 @@ public function register()
 ```
 
 #### Using UUID's in Entity
+**To use UUID feature install suggested ramsey/uuid package**
+
 This package provides possibility to use UUID's in Entities as secondary key, for external use (i.e. in routes). 
 It still requires to use integer type ID's as Primary keys in your database.
 
