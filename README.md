@@ -16,17 +16,19 @@ You can install this package by composer:
     
 ### Version compatibility
 #### Laravel
-Framework | Package
-:---------|:--------
-5.8.x     | ^1.x.x
-6.0.x     | ^2.x.x
-7.x.x     | ^3.x.x
+Framework | Package | Note
+:---------|:--------|:------
+5.8.x     | ^1.x.x  | No longer maintained.
+6.0.x     | ^2.x.x  |
+7.x.x     | ^3.x.x  |
+8.x.x     | ^4.x.x  |
 #### Lumen
-Framework | Package
-:---------|:--------
-5.8.x     | ^1.1.x
-6.0.x     | ^2.x.x
-7.x.x     | ^3.x.x
+Framework | Package | Note
+:---------|:--------|:------
+5.8.x     | ^1.1.x  | No longer maintained.
+6.0.x     | ^2.x.x  |
+7.x.x     | ^3.x.x  |
+8.x.x     | ^4.x.x  |
 
 ## Classes included
 
