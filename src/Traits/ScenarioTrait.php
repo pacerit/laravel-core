@@ -4,7 +4,7 @@ namespace PacerIT\LaravelCore\Traits;
 
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Container\BindingResolutionException;
-use PacerIT\LaravelCore\Helpers\ArrayHelper;
+use Illuminate\Support\Arr;
 use PacerIT\LaravelCore\Traits\Exceptions\ScenarioNotRegistered;
 use PacerIT\LaravelCore\Traits\Exceptions\ScenarioRegistered;
 
@@ -104,7 +104,7 @@ trait ScenarioTrait
             throw new ScenarioNotRegistered($scenario);
         }
 
-        $scenarioInstance = ArrayHelper::get($this->scenarios, $scenario);
+        $scenarioInstance = Arr::get($this->scenarios, $scenario);
 
         if (is_string($scenarioInstance)) {
             $container = Container::getInstance();

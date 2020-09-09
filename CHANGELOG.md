@@ -1,4 +1,7 @@
 # Changelog
+## v.4.0.1
+### See upgrade guide!
+    - removed unused ArrayHelper class
 ## v.4.0.0
     - update dependencies for Laravel and Lumen 8.x.x compatibility
 ## v.3.0.1
