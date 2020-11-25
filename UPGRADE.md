@@ -1,4 +1,6 @@
 # Upgrade guide
+## From 2.2.x and higher to 4.0.1 and higher
+1. Remove usage of ArrayHelper class - switch to Illuminate\Support\Arr class
 ## From 2.1.x to 2.2.x and higher
 1. Namespace change - Check all implementation of your repositories, and change namespaces:
 
