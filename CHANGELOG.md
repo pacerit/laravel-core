@@ -1,4 +1,6 @@
 # Changelog
+## v.2.2.2
+    - update ext-json version to "*" in composer.json file
 ## v.2.2.1
     - add ramsey/uuid package as required
 ## v.2.2.0
