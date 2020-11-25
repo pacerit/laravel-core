@@ -1,4 +1,6 @@
 # Changelog
+## v.3.0.2
+    - update ext-json version to "*" in composer.json file
 ## v.3.0.1
     - ramsey/uuid is now suggested package instead of required
 ## v.3.0.0
