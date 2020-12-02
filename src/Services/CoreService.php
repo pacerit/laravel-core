@@ -3,10 +3,12 @@
 namespace PacerIT\LaravelCore\Services;
 
 use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Database\Eloquent\Model;
 use PacerIT\LaravelCore\Entities\Interfaces\CoreEntityInterface;
 use PacerIT\LaravelCore\Formatters\Interfaces\CoreFormatterInterface;
 use PacerIT\LaravelCore\Services\Exceptions\EntityNotFoundByID;
 use PacerIT\LaravelCore\Services\Exceptions\EntityNotFoundByKey;
+use PacerIT\LaravelCore\Services\Exceptions\EntityNotSet;
 use PacerIT\LaravelCore\Services\Interfaces\CoreServiceInterface;
 use PacerIT\LaravelRepository\Repositories\Exceptions\RepositoryEntityException;
 use PacerIT\LaravelRepository\Repositories\Interfaces\CoreRepositoryInterface;
@@ -194,6 +196,8 @@ abstract class CoreService implements CoreServiceInterface
     /**
      * Get previously set entity class.
      *
+     * @throws EntityNotSet
+     *
      * @return CoreEntityInterface
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
@@ -202,6 +206,10 @@ abstract class CoreService implements CoreServiceInterface
      */
     public function getModel(): CoreEntityInterface
     {
+        if (! $this->entity instanceof Model) {
+            throw new EntityNotSet();
+        }
+
         return $this->entity;
     }
 
