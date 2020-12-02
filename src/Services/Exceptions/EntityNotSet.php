@@ -6,7 +6,7 @@ use PacerIT\LaravelCore\Exceptions\CoreException;
 use Throwable;
 
 /**
- * Class EntityNotSet
+ * Class EntityNotSet.
  *
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  *

@@ -206,7 +206,7 @@ abstract class CoreService implements CoreServiceInterface
      */
     public function getModel(): CoreEntityInterface
     {
-        if (! $this->entity instanceof Model) {
+        if (!$this->entity instanceof Model) {
             throw new EntityNotSet();
         }
 
