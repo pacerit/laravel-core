@@ -7,6 +7,7 @@ use PacerIT\LaravelCore\Entities\Interfaces\CoreEntityInterface;
 use PacerIT\LaravelCore\Formatters\Interfaces\CoreFormatterInterface;
 use PacerIT\LaravelCore\Services\Exceptions\EntityNotFoundByID;
 use PacerIT\LaravelCore\Services\Exceptions\EntityNotFoundByKey;
+use PacerIT\LaravelCore\Services\Exceptions\EntityNotSet;
 use PacerIT\LaravelRepository\Repositories\Exceptions\RepositoryEntityException;
 use PacerIT\LaravelRepository\Repositories\Interfaces\CoreRepositoryInterface;
 
@@ -128,11 +129,13 @@ interface CoreServiceInterface
     /**
      * Get previously set entity class.
      *
+     * @throws EntityNotSet
+     *
      * @return CoreEntityInterface
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
-     * @since 2019-07-10
+     * @since 02.09.2018
      */
     public function getModel(): CoreEntityInterface;
 
