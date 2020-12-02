@@ -1,4 +1,6 @@
 # Changelog
+## v.2.2.3
+    - now function getModel() throws EntityNotSet exception if no model is currently set
 ## v.2.2.2
     - update ext-json version to "*" in composer.json file
 ## v.2.2.1
