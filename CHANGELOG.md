@@ -1,4 +1,6 @@
 # Changelog
+## v.4.0.4
+    - compatibility with PHP version 8.x (updated composer.json file)
 ## v.4.0.3
     - now function getModel() throws EntityNotSet exception if no model is currently set
 ## v.4.0.2
