@@ -1,4 +1,6 @@
 # Changelog
+## v.5.0.0
+    - update dependencies for Laravel and Lumen 9.x.x compatibility
 ## v.4.0.4
     - compatibility with PHP version 8.x (updated composer.json file)
 ## v.4.0.3

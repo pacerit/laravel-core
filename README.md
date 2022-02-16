@@ -19,16 +19,19 @@ You can install this package by composer:
 Framework | Package | Note
 :---------|:--------|:------
 5.8.x     | ^1.x.x  | No longer maintained.
-6.0.x     | ^2.x.x  |
-7.x.x     | ^3.x.x  |
-8.x.x     | ^4.x.x  |
+6.0.x     | ^2.x.x  | Bug fixes only.
+7.x.x     | ^3.x.x  | Bug fixes only.
+8.x.x     | ^4.x.x  | PHP ^8.0 Supported from 4.0.4
+9.x.x     | ^5.x.x  |
+
 #### Lumen
 Framework | Package | Note
 :---------|:--------|:------
 5.8.x     | ^1.1.x  | No longer maintained.
-6.0.x     | ^2.x.x  |
-7.x.x     | ^3.x.x  |
-8.x.x     | ^4.x.x  |
+6.0.x     | ^2.x.x  | Bug fixes only.
+7.x.x     | ^3.x.x  | Bug fixes only.
+8.x.x     | ^4.x.x  | PHP ^8.0 Supported from 4.0.4
+9.x.x     | ^5.x.x  |
 
 ## Classes included
 
